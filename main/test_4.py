@@ -1,8 +1,10 @@
 from schema import Schema, SchemaError, Optional
 import yaml
 import pytest
+import time
 
 key = 0
+new_filename = ''
 
 @pytest.fixture
 def test_convert_yml_to_dict():
@@ -42,10 +44,23 @@ def test_CheckKeyExist(test_convert_yml_to_dict):
     else:
         key = 0
 
+def test_createTmpfile(filename):
+
+    global new_filename
+    timestr = time.strftime("%Y%m%d-%H%M%S") 
+    new_filename = filename + timestr + '.py'
+    return new_filename
+    
+
 def test_create_tmpfile(test_convert_yml_to_dict):
+    global new_filename
     temp = test_convert_yml_to_dict
-   
-    with open('./../tmp/tmp_.py', 'w+') as f:
+    temp1 = './../tmp/'
+    new_filename = temp1 + new_filename
+
+    print(new_filename)
+
+    with open(new_filename, 'w+') as f:
         DUT1_HwType = temp['HardwareList']['DUT1']['Hardware_type']
         DUT1_Protocol = temp['HardwareList']['DUT1']['access']['protocol']
         DUT1_IP = temp['HardwareList']['DUT1']['access']['ip']

@@ -1,8 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
 source ./../Scripts/testcaseList.sh
-
-echo ${CommonTestcase_array[*]}
 
 Usage ()
 {
@@ -10,7 +8,7 @@ Usage ()
 	echo "Option with (*) must be provided"
 	echo "-t <testbed filename>		- Specify testbed filename(*)"
 	echo "-s <individul script name>	- Specify test cases to execute. Default: Execute all testcases from Common list."
-	echo "-lst <list of testcases>	- Specify the list of testcases to execute. Example: Common or Platform_<XXXXXX>. Default: Execute all testcases from Common list"
+	echo "-l <list of testcases>	- Specify the list of testcases to execute. Example: Common or Platform_<XXXXXX>. Default: Execute all testcases from Common list"
 	echo "-r <report directory>		- Specify the report directory name"
 }
 
@@ -34,21 +32,18 @@ ParseTestbedfile ()
 	
 }
 
-DefaultTestcaselist ()
-{
-	echo ${CommonTestcase_array[*]}
-}
-
 
 ValidateCommandlineInput ()
 {
 	if [[ -z ${TESTBED} ]]; then 
-		echo "TESTBED file is not set"
+		echo "Error: Argument is missing - TESTBED file is not set"
 		Usage
 		exit 1;
 	fi
 	if [[ -z ${SCRIPT} && -z ${TESTCASES} ]]; then 
-		echo "Neither SCRIPT (-s) nor TESTCASE (-lst) is set.."
+		echo "Neither SCRIPT (-s) nor TESTCASES (-lst) is set."
+		echo "Switch to default mode:"
+		TESTCASES=${CommonTestcase_array[*]}
 	fi
 }
 
@@ -86,22 +81,30 @@ REPORT=""
 #	exit 1
 #fi	
 
-while getopts t:s:r:lst: flag
+while getopts t:s:r:l: flag
 do
 	case "${flag}" in
 		t) TESTBED=${OPTARG};;
 		s) SCRIPT=${OPTARG};;
 		r) REPORT=${OPTARG};;
-		lst) TESTCASES="${DEFAULT_TESTCASES} ${OPTARG}";;
+		l) TESTCASES="${DEFAULT_TESTCASES} ${OPTARG}";;
 		*) Usage;
 			exit 1;;
 	esac
 done
 
+file_name=Tmp
+ 
+current_time=$(date "+%Y_%m_%d-%H_%M_%S")
+ 
+new_fileName=$file_name.$current_time
 
+echo $new_fileName
 
 #Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
 
-DefaultTestcaselist
-#ParseTestbedfile $TESTBED_PATH $testbed 
+ValidateCommandlineInput
 
+ParseTestbedfile $TESTBED_PATH $testbed
+
+#pytest ./test_4.py --filename temp
