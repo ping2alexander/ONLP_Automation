@@ -1,0 +1,21 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1655918240187" stop="1655918240191">
+  <name>test_4</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1655918240187" status="passed" stop="1655918240191">
+      <name>test_parse_testbed_file</name>
+      <attachments>
+        <attachment source="60fcfa65-1fda-40fa-8680-5de04c25da78-attachment.txt" title="Captured stdout setup" type="text/plain"/>
+        <attachment source="fb158f1b-7ae3-473c-9325-db7a6b372222-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="26053-MainThread"/>
+        <label name="host" value="alexander-Virtual-Machine"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython2"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

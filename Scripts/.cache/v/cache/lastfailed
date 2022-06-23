@@ -1,0 +1,5 @@
+{
+  "test_1.1.py": true, 
+  "test_1_1.py::test_compare": true, 
+  "test_1_2.py::test_compare": true
+}
