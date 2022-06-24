@@ -2,14 +2,17 @@ from schema import Schema, SchemaError, Optional
 import yaml
 import pytest
 import time
+import logging
 
 key = 0
 new_filename = ''
+log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 @pytest.fixture
 def test_convert_yml_to_dict():
     with open('./../cfg/testbed.yml', 'r') as f:
         my_dict = yaml.safe_load(f)
+      
     print(my_dict)
     return my_dict
 

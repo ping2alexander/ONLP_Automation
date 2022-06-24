@@ -99,12 +99,14 @@ current_time=$(date "+%Y_%m_%d-%H_%M_%S")
  
 new_fileName=$file_name.$current_time
 
-echo $new_fileName
+#echo $new_fileName
 
-#Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
+# Check whether all mandatory command-line arguments are provided as input. If not, return error and print help text.
 
 ValidateCommandlineInput
 
-ParseTestbedfile $TESTBED_PATH $testbed
+#Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
 
-#pytest ./test_4.py --filename temp
+ParseTestbedfile $TESTBED_PATH $TESTBED
+
+pytest ./test_testbed_file_parser.py --filename temp
