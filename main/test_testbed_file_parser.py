@@ -3,17 +3,31 @@ import yaml
 import pytest
 import time
 import logging
+from os.path import exists
 
 key = 0
+cfgFile = ''
 new_filename = ''
 log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+def logmessage(msg, level):
+    log_formatter = '%(asctime)s %(filename)s %(name)s %(levelname)s \"%(message)s\"'
+    logging.basicConfig(format=log_formatter, level=level, datefmt='%d-%b-%y %H:%M:%S')
+    if level == logging.DEBUG:
+        logging.debug(msg)
+    if level == logging.ERROR:
+        logging.error(msg)
+    if level == logging.WARNING:
+        logging.warning(msg)
+    if level == logging.INFO:
+        logging.info(msg)
+
 @pytest.fixture
-def test_convert_yml_to_dict():
-    with open('./../cfg/testbed.yml', 'r') as f:
+def test_convert_yml_to_dict(testbed):
+    cfg = './../cfg/' + testbed
+    with open(cfg, 'r') as f:
         my_dict = yaml.safe_load(f)
-      
-    print(my_dict)
+    #print(my_dict)
     return my_dict
 
 @pytest.fixture
@@ -22,7 +36,7 @@ def test_check_syntax_error(test_convert_yml_to_dict):
 
     try:
         config_schema.validate(test_convert_yml_to_dict)
-        print("No syntax error found in the testbed file.")
+        logmessage("No syntax error found in the testbed file.", logging.INFO)
         return 0;
     except SchemaError as se:
         raise se
@@ -31,10 +45,10 @@ def test_check_syntax_error(test_convert_yml_to_dict):
 
 def test_parse_testbed_file(test_check_syntax_error):
     if test_check_syntax_error != 0:
-        print("Error in the testbed file. script terminated !!!")
+        logmessage("Error in the testbed file. script terminated !!!", logging.ERROR)
         return -1;
     else:
-        print("No syntax error found in the testbed file.")
+        logmessage("No syntax error found in the testbed file.", logging.INFO)
 
 def test_CheckKeyExist(test_convert_yml_to_dict):
     global key
@@ -47,22 +61,20 @@ def test_CheckKeyExist(test_convert_yml_to_dict):
     else:
         key = 0
 
-def test_createTmpfile(filename):
+def test_createTmpFile(filename, testbed):
 
     global new_filename
-    timestr = time.strftime("%Y%m%d-%H%M%S") 
-    new_filename = filename + timestr + '.py'
+    new_filename = filename
     return new_filename
     
 
-def test_create_tmpfile(test_convert_yml_to_dict):
+def test_Populate_TmpFile(test_convert_yml_to_dict):
     global new_filename
     temp = test_convert_yml_to_dict
+    print(temp)
     temp1 = './../tmp/'
     new_filename = temp1 + new_filename
-
-    print(new_filename)
-
+    print('\n')
     with open(new_filename, 'w+') as f:
         DUT1_HwType = temp['HardwareList']['DUT1']['Hardware_type']
         DUT1_Protocol = temp['HardwareList']['DUT1']['access']['protocol']
@@ -119,5 +131,20 @@ def test_create_tmpfile(test_convert_yml_to_dict):
                 i = i + 1
                 j = j + 1
 
-   
+    result = exists(new_filename)
+
+    if result:
+        logmessage("Temp file is created and values are populated", logging.INFO)
+        try:
+            with open(new_filename, 'r') as r:
+                data = r.read()
+                print("********************************************************************")
+                print(new_filename)
+                print("********************************************************************")
+                print(data)
+        except Exception as e:
+            logging.error("Exception occurred", exc_info=True)
+    else:
+        logmessage("Temp file is NOT created", logging.ERROR)
+
 

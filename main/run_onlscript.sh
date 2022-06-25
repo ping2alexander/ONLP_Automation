@@ -8,14 +8,15 @@ Usage ()
 	echo "Option with (*) must be provided"
 	echo "-t <testbed filename>		- Specify testbed filename(*)"
 	echo "-s <individul script name>	- Specify test cases to execute. Default: Execute all testcases from Common list."
-	echo "-l <list of testcases>	- Specify the list of testcases to execute. Example: Common or Platform_<XXXXXX>. Default: Execute all testcases from Common list"
+	echo "-l <list of testcases>		- Specify the list of testcases to execute. Example: Common or Platform_<XXXXXX>. Default: Execute all testcases from Common list"
 	echo "-r <report directory>		- Specify the report directory name"
+	echo "-f <tempfilename> 		- Specify the temp filename where all testbed and system information will be stored as python variable(*)"
 }
 
-ParseTestbedfile ()
+CheckTestbedFilePresence ()
 {
 	echo "***************************************************"
-	echo "            Parsing testbed file                   "
+	echo "            Check testbed file presence            "
 	echo "***************************************************"
 
 	echo "Check testbed file is present in the specific location"
@@ -27,7 +28,7 @@ ParseTestbedfile ()
 		echo "Specified testbed file is not present in the location:  $1"
 		exit 1;
 	else
-		echo "File exist"
+		echo "Testbed file exist in the location"
 	fi
 	
 }
@@ -81,23 +82,24 @@ REPORT=""
 #	exit 1
 #fi	
 
-while getopts t:s:r:l: flag
+while getopts t:s:r:l:f: flag
 do
 	case "${flag}" in
 		t) TESTBED=${OPTARG};;
 		s) SCRIPT=${OPTARG};;
 		r) REPORT=${OPTARG};;
 		l) TESTCASES="${DEFAULT_TESTCASES} ${OPTARG}";;
+		f) TEMPFILE="${OPTARG}";;
 		*) Usage;
 			exit 1;;
 	esac
 done
 
-file_name=Tmp
+#file_name=Tmp
  
-current_time=$(date "+%Y_%m_%d-%H_%M_%S")
+#current_time=$(date "+%Y_%m_%d-%H_%M_%S")
  
-new_fileName=$file_name.$current_time
+#new_fileName=$file_name.$current_time
 
 #echo $new_fileName
 
@@ -105,8 +107,13 @@ new_fileName=$file_name.$current_time
 
 ValidateCommandlineInput
 
+CheckTestbedFilePresence $TESTBED_PATH $TESTBED
+
 #Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
 
-ParseTestbedfile $TESTBED_PATH $TESTBED
+DEBUG='-v'
+CONSOLE_LOG='-s'
+FILENAME=${TEMPFILE}
+EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
-pytest ./test_testbed_file_parser.py --filename temp
+pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} --alluredir=web
