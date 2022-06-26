@@ -2,6 +2,7 @@ import yaml
 import time
 
 def GetProductName(DUT):
+    Device = Login(DUT,)
     return value
 
 def GetPartNumber(DUT):
@@ -39,8 +40,4 @@ def GetONIEVersion(DUT):
 
 def GetCountryCode(DUT):
     return
-
-
-
-
 

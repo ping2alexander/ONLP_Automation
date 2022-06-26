@@ -37,18 +37,3 @@ class Login():
         else:
             print("Error: {}".format(stderr.read().decode("utf8")))
 
-
-DUT1 = Login('192.168.1.9', 'alexander', 'Dafne@140820')
-
-DUT1.SendACommand('uname -a')
-DUT1.SendACommand('ls -al')
-DUT1.SendACommand('python3 --version')
-DUT1.SendACommand('asferfc')
-
-DUT1.Logout()
-
-DUT1 = Login('192.168.1.9', 'alexander', 'Dafne@140820')
-
-DUT1.SendACommand('python3 --version')
-
-
