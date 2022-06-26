@@ -57,12 +57,16 @@ PARENTPATH=$(dirname $MAINPATH)
 SCRIPT_PATH="${PARENTPATH}/Scripts"
 TESTBED_PATH="${PARENTPATH}/cfg"
 TMPFILEPATH="${PARENTPATH}/tmp"
+PYTHONPATH="${PARENTPATH}/Lib"
 
 # SCRIPT_PATH, TESTBED_PATH and TMPFILEPATH contains '=' as a starting character. Remove '=' from the sring using blow commands.
 
 SCRIPT_PATH=`echo $SCRIPT_PATH | awk '{ print substr( $0, 2 ) }'`
 TESTBED_PATH=`echo $TESTBED_PATH | awk '{ print substr( $0, 2 ) }'`
 TMPFILEPATH=`echo $TMPFILEPATH | awk '{ print substr( $0, 2 ) }'`
+PYTHONPATH=`echo $PYTHONPATH | awk '{ print substr( $0, 2 ) }'`
+
+export LIB_Folder=$PYTHONPATH
 
 LOG_PATH="${SCRIPT_PATH}/log"
 TESTCASES=""
@@ -95,13 +99,7 @@ do
 	esac
 done
 
-#file_name=Tmp
- 
-#current_time=$(date "+%Y_%m_%d-%H_%M_%S")
- 
-#new_fileName=$file_name.$current_time
-
-#echo $new_fileName
+export 
 
 # Check whether all mandatory command-line arguments are provided as input. If not, return error and print help text.
 
@@ -117,3 +115,9 @@ FILENAME=${TEMPFILE}
 EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} --alluredir=web
+
+# Gather system information from all DUT's and store it in the tmp file.
+
+EXTRA_CLI_ARGUMENT_LIST="--filename ${FILENAME}"
+
+pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
