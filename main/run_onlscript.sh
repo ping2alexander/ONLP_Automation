@@ -41,11 +41,21 @@ ValidateCommandlineInput ()
 		Usage
 		exit 1;
 	fi
-	if [[ -z ${SCRIPT} && -z ${TESTCASES} ]]; then 
+	if [[ -z ${SCRIPT} && -z ${LIST} ]]; then 
 		echo "Neither SCRIPT (-s) nor TESTCASES (-lst) is set."
 		echo "Switch to default mode:"
 		TESTCASES=${CommonTestcase_array[*]}
+	elif [[ ! -z ${SCRIPT} && ! -z ${LIST} ]] ; then
+		#When script and  list are passed as inputs, then script will take higher priority and run	
+		TESTCASES=${SCRIPT}
+	elif [[ ! -z ${SCRIPT} || -z ${LIST} ]] ; then
+                TESTCASES=${SCRIPT}
+	elif [[ -z ${SCRIPT} || ! ! ! ! ! ! ! ! -z ${LIST} ]] ; then
+                TESTCASES=${LIST}
+	else
+		TESTCASES=${CommonTestcase_array[*]}
 	fi
+
 }
 
 #Setting environment variable
@@ -69,10 +79,10 @@ PYTHONPATH=`echo $PYTHONPATH | awk '{ print substr( $0, 2 ) }'`
 export LIB_Folder=$PYTHONPATH
 
 LOG_PATH="${SCRIPT_PATH}/log"
-TESTCASES=""
+LIST=None
 TESTBED=""
-DEFAULT_TESTCASES=""
-SCRIPT=""
+DEFAULT_TESTCASES="Common"
+SCRIPT=None
 REPORT=""
 
 #echo "Script name : $SCRIPT"
@@ -92,7 +102,7 @@ do
 		t) TESTBED=${OPTARG};;
 		s) SCRIPT=${OPTARG};;
 		r) REPORT=${OPTARG};;
-		l) TESTCASES="${DEFAULT_TESTCASES} ${OPTARG}";;
+		l) LIST="${OPTARG}";;
 		f) TEMPFILE="${OPTARG}";;
 		*) Usage;
 			exit 1;;
@@ -116,9 +126,6 @@ EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} --alluredir=web
 
-# Checking the DUTs reachability from the server
-
-
 
 # Gather system information from all DUT's and store it in the tmp file.
 
@@ -126,4 +133,8 @@ EXTRA_CLI_ARGUMENT_LIST="--filename ${FILENAME}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
 
+#Testcase execution start
 
+echo $TESTCASES
+
+#Testcase exection end
