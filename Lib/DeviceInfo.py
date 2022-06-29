@@ -1,8 +1,10 @@
 import yaml
 import time
 
+
+
 def GetProductName(DUT):
-    Device = Login(DUT,)
+    Device = Login(DUT)
     return value
 
 def GetPartNumber(DUT):

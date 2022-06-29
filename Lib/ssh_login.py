@@ -28,8 +28,11 @@ class Login():
             return -1;
 
         status = stdout.channel.recv_exit_status()
+
         if status is 0:
-            print(stdout.read().decode("utf8"))
+            res = stdout.read().decode("utf8")
+            return res;
+
         elif status is -1:
             print("Error: CLI Command is not yet executed")
             print(stderr.read().decode("utf8"));
