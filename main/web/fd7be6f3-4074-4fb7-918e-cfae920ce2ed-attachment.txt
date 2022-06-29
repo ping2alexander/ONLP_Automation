@@ -1,1 +1,0 @@
-ping: 4192.168.1.122: Name or service not known

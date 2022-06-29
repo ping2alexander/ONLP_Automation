@@ -1,0 +1,59 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1656523371893" stop="1656523371913">
+  <name>test_testbed_file_parser</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1656523371893" status="passed" stop="1656523371900">
+      <name>test_parse_testbed_file[testbed.yml]</name>
+      <attachments>
+        <attachment source="8823dbf3-3fc1-47c7-8e3c-271e98b069c7-attachment.txt" title="Captured log setup" type="text/plain"/>
+        <attachment source="a2a3aa45-7598-450b-b15e-732b51093135-attachment.txt" title="Captured log call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="19591-MainThread"/>
+        <label name="host" value="alexander-Virtual-Machine"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython2"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1656523371901" status="passed" stop="1656523371906">
+      <name>test_CheckKeyExist[testbed.yml]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="19591-MainThread"/>
+        <label name="host" value="alexander-Virtual-Machine"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython2"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1656523371907" status="passed" stop="1656523371907">
+      <name>test_createTmpFile[tmp_testbed-testbed.yml]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="19591-MainThread"/>
+        <label name="host" value="alexander-Virtual-Machine"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython2"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1656523371908" status="passed" stop="1656523371913">
+      <name>test_Populate_TmpFile[testbed.yml]</name>
+      <attachments>
+        <attachment source="c1ba394b-9591-49a0-ad7d-4a2b0beda04b-attachment.txt" title="Captured log call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="19591-MainThread"/>
+        <label name="host" value="alexander-Virtual-Machine"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython2"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>
