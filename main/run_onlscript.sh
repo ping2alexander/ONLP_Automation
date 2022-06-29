@@ -116,8 +116,14 @@ EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} --alluredir=web
 
+# Checking the DUTs reachability from the server
+
+
+
 # Gather system information from all DUT's and store it in the tmp file.
 
 EXTRA_CLI_ARGUMENT_LIST="--filename ${FILENAME}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
+
+

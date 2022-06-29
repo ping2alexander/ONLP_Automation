@@ -35,7 +35,8 @@ def test_convert_yml_to_dict(testbed):
     cfg = './../cfg/' + testbed
     with open(cfg, 'r') as f:
         my_dict = yaml.safe_load(f)
-    #print(my_dict)
+    print(my_dict)
+    print(type(my_dict))
     return my_dict
 
 @pytest.fixture
