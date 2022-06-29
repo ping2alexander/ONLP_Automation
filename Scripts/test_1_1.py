@@ -1,28 +1,18 @@
 import pytest
+import os.path as path
+import sys
+import time
 import logging
+import os
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+parentdir = path.abspath(path.join(__file__,"../.."))
+libpath = parentdir + '/Lib'
+sys.path.insert(0, libpath)
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+from ssh_login import Login
+from DeviceInfo import *
 
-def test_print():
-    print("Hello.. This is just a sample code !!!!")
-    logger.info("mesaage printed successfully")
-def test_compare():
-    assert 1 == 2
-    logger.error("Assertion failed.")
-def test_add():
-    var1 = 1
-    var2 = 2
-    result = var1 + var2
+def test_getDeviceONIEVersion():
+    val = GetONIEVersion('192.168.1.5')
 
-    return result
-
-def test_multiply():
-    var1 = 10
-    var2 = 10
-
-    result = var1 * var2
-
-    return result
+    print("Current ONIE version: {}".format(val))

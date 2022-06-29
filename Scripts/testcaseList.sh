@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CommonTestcase_array=(tc_1 tc_2 tc_3 tc_4 tc_5)
+CommonTestcase_array=(test_1_1 test_1_2 test_1_3 test_1_4 test_1_5)
 Platform_Seastone=()
 Platform_Questone=()
 Platform_Haliburton=()
