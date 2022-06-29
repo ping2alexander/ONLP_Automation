@@ -13,8 +13,7 @@ from ssh_login import Login
 from DeviceInfo import *
 
 @pytest.mark.All
-@pytest.mark.Sanity
-def test_getDeviceONIEVersion():
-    val = GetONIEVersion('192.168.1.5')
+def test_GetPlatform_Name():
+    val = GetPlatformName('192.168.1.5')
 
-    print("Current ONIE version: {}".format(val))
+    print("Platform Name: {}".format(val))

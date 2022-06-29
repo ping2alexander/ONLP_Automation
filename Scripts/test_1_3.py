@@ -14,7 +14,7 @@ from DeviceInfo import *
 
 @pytest.mark.All
 @pytest.mark.Sanity
-def test_getDeviceONIEVersion():
-    val = GetONIEVersion('192.168.1.5')
+def test_GetDeviceVersion():
+    val = GetDeviceVersion('192.168.1.5')
 
-    print("Current ONIE version: {}".format(val))
+    print("Current Device version: {}".format(val))
