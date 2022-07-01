@@ -119,11 +119,35 @@ def Get_Thermal_Value(IPAddress, Thermal, key):
         return -1
 
 
+def Get_LED_Value(IPAddress, LED, key):
+    DUT = Login(IPAddress, 'alexander', 'Dafne@140820')
 
-res1 = Get_Thermal_Value('192.168.1.6', 4, 'Name')
-res2 = Get_Thermal_Value('192.168.1.6', 4, 'Description')
-res3 = Get_Thermal_Value('192.168.1.6', 4, 'Status')
-res4 = Get_Thermal_Value('192.168.1.6', 4, 'Temperature')
+    data = DUT.SendACommand('cat onlpdump_ery.yml')
+
+    with open('test.yml','w') as w:
+        w.write(data)
+    with open('test.yml', 'r') as r:
+        input1 = yaml.safe_load(r)
+
+    LED_Dict = input1["LEDs"]
+
+    LEDIndex = LED - 1
+
+    if LEDIndex <= len(LED_Dict):
+        if key in LED_Dict[LEDIndex]:
+            return LED_Dict[LEDIndex][key]
+        else:
+            print("Specified key is not present in the dictionary file")
+    else:
+        print("Index is not matching")
+        return -1
+
+
+
+res1 = Get_LED_Value('192.168.1.6', 4, 'Name')
+res2 = Get_LED_Value('192.168.1.6', 4, 'Description')
+res3 = Get_LED_Value('192.168.1.6', 4, 'State')
+res4 = Get_LED_Value('192.168.1.6', 4, 'Mode')
 
 print(res1)
 print(res2)
