@@ -18,8 +18,10 @@ def Get_Fan_Value(IPAddress, FanIndex, key):
     FanIndex = FanIndex - 1
 
     if FanIndex <= len(Fan_Dict):
-        print(Fan_Dict[FanIndex])
-        return Fan_Dict[FanIndex][key]
+        if key in Fan_Dict[FanIndex]:
+            return Fan_Dict[FanIndex][key]
+        else:
+            print("Specified key is not present in the dictionary file")
     else:
         print("Index is not matching")
         return -1
@@ -38,8 +40,10 @@ def Get_PSU_Value(IPAddress, PSU, key):
     PSUIndex = PSU - 1
 
     if PSUIndex <= len(PSU_Dict):
-        print(PSU_Dict[PSUIndex])
-        return PSU_Dict[PSUIndex][key]
+        if key in PSU_Dict[PSUIndex]:
+            return PSU_Dict[PSUIndex][key]
+        else:
+            print("Specified key is not present in the dictionary file")
     else:
         print("Index is not matching")
         return -1
@@ -91,8 +95,37 @@ def Get_PSU_Thermal_Value(IPAddress, PSU, Thermal, key):
         return -1
 
 
+def Get_Thermal_Value(IPAddress, Thermal, key):
+    DUT = Login(IPAddress, 'alexander', 'Dafne@140820')
+
+    data = DUT.SendACommand('cat onlpdump_ery.yml')
+
+    with open('test.yml','w') as w:
+        w.write(data)
+    with open('test.yml', 'r') as r:
+        input1 = yaml.safe_load(r)
+
+    Thermal_Dict = input1["Thermals"]
+
+    ThermalIndex = Thermal - 1
+
+    if ThermalIndex <= len(Thermal_Dict):
+        if key in Thermal_Dict[ThermalIndex]:
+            return Thermal_Dict[ThermalIndex][key]
+        else:
+            print("Specified key is not present in the dictionary file")
+    else:
+        print("Index is not matching")
+        return -1
 
 
-res = Get_PSU_Thermal_Value('192.168.1.6', 1, 2, 'Temperature')
 
+res1 = Get_Thermal_Value('192.168.1.6', 4, 'Name')
+res2 = Get_Thermal_Value('192.168.1.6', 4, 'Description')
+res3 = Get_Thermal_Value('192.168.1.6', 4, 'Status')
+res4 = Get_Thermal_Value('192.168.1.6', 4, 'Temperature')
 
+print(res1)
+print(res2)
+print(res3)
+print(res4)
