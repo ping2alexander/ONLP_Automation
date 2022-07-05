@@ -156,7 +156,7 @@ if [[ ! -z ${SCRIPT} ]]; then
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} ${CONSOLE_LOG} -m ${MARKER} ./../Scripts/
+	pytest ${DEBUG} ${CONSOLE_LOG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST}
 fi
 
 echo "======================== Testcase exection end  ====================================="
