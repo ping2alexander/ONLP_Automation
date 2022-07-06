@@ -7,6 +7,7 @@ import yaml
 import time
 import logging
 import os
+from colorama import Fore, Back, Style
 
 parentdir = path.abspath(path.join(__file__,"../.."))
 libpath = parentdir + '/Lib'
@@ -45,21 +46,24 @@ def test_importlib(filename):
     return Tmp;
 
 def test_reachability(test_importlib):
+    dut1_test = 1
+    dut2_test = 1
     DUTInfo = test_importlib
     try:
         DUTInfo.DUT1_IP
 
-        print("DUT1_IP variable is defined!!!")
+        print(Fore.GREEN + "DUT1_IP variable is defined!!!")
         command = "ping -c 5 " + DUTInfo.DUT1_IP
 
         HOST_Status = os.system(command)
 
         if HOST_Status is 0:
-            print("DUT1 - {} - Device is reachable - success!!!".format(DUTInfo.DUT1_IP))
+            print(Fore.GREEN + "DUT1 - {} - Device is reachable - success!!!".format(DUTInfo.DUT1_IP))
         else:
-            print("DUT1 - {} - Device is NOT reachable  -  Failed!!!".format(DUTInfo.DUT1_IP))
+            print(Fore.RED + "DUT1 - {} - Device is NOT reachable  -  Failed!!!".format(DUTInfo.DUT1_IP))
+            dut1_test = 0
     except NameError:
-        print("DUT1_IP variable is NOT defined anywhere in the configuration file")
+        print(Fore.RED + "DUT1_IP variable is NOT defined anywhere in the configuration file")
         exit;
     
     try:
@@ -71,13 +75,13 @@ def test_reachability(test_importlib):
         HOST_Status = os.system(command)
 
         if HOST_Status is 0:
-            print("DUT2 -{} - Device is reachable - Success!!!".format(DUTInfo.DUT2_IP))
+            print(Fore.GREEN + "DUT2 -{} - Device is reachable - Success!!!".format(DUTInfo.DUT2_IP))
         else:
-            print("DUT2 - {} - Device is NOT reachable  - Failed!!!".format(DUTInfo.DUT2_IP))
+            print(Fore.RED + "DUT2 - {} - Device is NOT reachable  - Failed!!!".format(DUTInfo.DUT2_IP))
+            dut2_test = 0;
     except NameError:
-        print("DUT2_IP variable is NOT defined anywhere in the configuration file")
+        print(Fore.RED + "DUT2_IP variable is NOT defined anywhere in the configuration file")
         return
-    
 
 
 # This fucntion will collect and store all system information from DUTs listed in testbed file.
@@ -86,9 +90,9 @@ def test_collect_sysinfo(test_importlib):
     DUTInfo = test_importlib
     try:
         DUTInfo.DUT1_IP
-        print("DUT1_IP variable is defined!!!")
+        print(Fore.GREEN + "DUT1_IP variable is defined!!!")
     except NameError:
-        print("NOT OK")
+        print(Fore.RED + "NOT OK")
         exit
 
     DUT1 = Login(DUTInfo.DUT1_IP, DUTInfo.DUT1_Username, DUTInfo.DUT1_Password)
@@ -140,54 +144,55 @@ def test_collect_sysinfo(test_importlib):
 
     try:
         DUTInfo.DUT2_IP
-        print("DUT2_IP variable is defined!!!")
+        print(Fore.GREEN + "DUT2_IP variable is defined!!!")
+    except:
+        return
      
-        DUT2 = Login(DUTInfo.DUT2_IP, DUTInfo.DUT2_Username, DUTInfo.DUT2_Password)
+    DUT2 = Login(DUTInfo.DUT2_IP, DUTInfo.DUT2_Username, DUTInfo.DUT2_Password)
 
-        input2 = DUT2.SendACommand('cat onlpdump')
+    input2 = DUT2.SendACommand('cat onlpdump')
 
-        with open('a.yml', 'w') as f:
-            f.write(input2.strip())
+    with open('a.yml', 'w') as f:
+        f.write(input2.strip())
 
-        with open('a.yml','r') as r:
-            res = yaml.safe_load(r)
+    with open('a.yml','r') as r:
+        res = yaml.safe_load(r)
     
-        with open(new_filename, 'a') as f:
-            DUT2_Product_Name = str(res['System Information']['Product Name'])
-            DUT2_Part_Number = str(res['System Information']['Part Number'])
-            DUT2_Serial_Number = str(res['System Information']['Serial Number'])
-            DUT2_MAC = str(res['System Information']['MAC'])
-            DUT2_MAC_Range = str(res['System Information']['MAC Range'])
-            DUT2_Manufacturer = str(res['System Information']['Manufacturer'])
-            DUT2_Manufacture_Date = str(res['System Information']['Manufacture Date'])
-            DUT2_Vendor = str(res['System Information']['Vendor'])
-            DUT2_Platform_Name = str(res['System Information']['Platform Name'])
-            DUT2_Device_Version = str(res['System Information']['Device Version'])
-            DUT2_Label_Revision = str(res['System Information']['Label Revision'])
-            DUT2_Country_Code = str(res['System Information']['Country Code'])
-            DUT2_Diag_Version = str(res['System Information']['Diag Version'])
-            DUT2_Service_Tag = str(res['System Information']['Service Tag'])
-            DUT2_ONIE_Version = str(res['System Information']['ONIE Version'])
+    with open(new_filename, 'a') as f:
+        DUT2_Product_Name = str(res['System Information']['Product Name'])
+        DUT2_Part_Number = str(res['System Information']['Part Number'])
+        DUT2_Serial_Number = str(res['System Information']['Serial Number'])
+        DUT2_MAC = str(res['System Information']['MAC'])
+        DUT2_MAC_Range = str(res['System Information']['MAC Range'])
+        DUT2_Manufacturer = str(res['System Information']['Manufacturer'])
+        DUT2_Manufacture_Date = str(res['System Information']['Manufacture Date'])
+        DUT2_Vendor = str(res['System Information']['Vendor'])
+        DUT2_Platform_Name = str(res['System Information']['Platform Name'])
+        DUT2_Device_Version = str(res['System Information']['Device Version'])
+        DUT2_Label_Revision = str(res['System Information']['Label Revision'])
+        DUT2_Country_Code = str(res['System Information']['Country Code'])
+        DUT2_Diag_Version = str(res['System Information']['Diag Version'])
+        DUT2_Service_Tag = str(res['System Information']['Service Tag'])
+        DUT2_ONIE_Version = str(res['System Information']['ONIE Version'])
 
 
-            f.write(str('DUT2_Product_Name') + "=" + "\"" + DUT2_Product_Name + "\"" + '\n')
-            f.write(str('DUT2_Part_Number') + "=" + "\"" + DUT2_Part_Number + "\"" + '\n')
-            f.write(str('DUT2_Serial_Number') + "=" + "\"" + DUT2_Serial_Number + "\"" + '\n')
-            f.write(str('DUT2_MAC') + "=" + "\"" + DUT2_MAC + "\"" + '\n')
-            f.write(str('DUT2_MAC_Range') + "=" + "\"" + DUT2_MAC_Range + "\"" + '\n')
-            f.write(str('DUT2_Manufacturer') + "=" + "\"" + DUT2_Manufacturer + "\"" + '\n')
-            f.write(str('DUT2_Manufacture_Date') + "=" + "\"" + DUT2_Manufacture_Date + "\"" + '\n')
-            f.write(str('DUT2_Vendor') + "=" + "\"" + DUT2_Vendor + "\"" + '\n')
-            f.write(str('DUT2_Platform_Name') + "=" + "\"" + DUT2_Platform_Name + "\"" + '\n')
-            f.write(str('DUT2_Device_Version') + "=" + "\"" + DUT2_Device_Version + "\"" + '\n')
-            f.write(str('DUT2_Label_Revision') + "=" + "\"" + DUT2_Label_Revision + "\"" + '\n')
-            f.write(str('DUT2_Country_Code') + "=" + "\"" + DUT2_Country_Code + "\"" + '\n')
-            f.write(str('DUT2_Diag_Version') + "=" + "\"" + DUT2_Diag_Version + "\"" + '\n')
-            f.write(str('DUT2_Service_Tag') + "=" + "\"" + DUT2_Service_Tag + "\"" + '\n')
-            f.write(str('DUT2_ONIE_Version') + "=" + "\"" + DUT2_ONIE_Version + "\"" + '\n')
-        
-    except NameError:
-        print("DUT2_IP is not defined in the configuration file")
+        f.write(str('DUT2_Product_Name') + "=" + "\"" + DUT2_Product_Name + "\"" + '\n')
+        f.write(str('DUT2_Part_Number') + "=" + "\"" + DUT2_Part_Number + "\"" + '\n')
+        f.write(str('DUT2_Serial_Number') + "=" + "\"" + DUT2_Serial_Number + "\"" + '\n')
+        f.write(str('DUT2_MAC') + "=" + "\"" + DUT2_MAC + "\"" + '\n')
+        f.write(str('DUT2_MAC_Range') + "=" + "\"" + DUT2_MAC_Range + "\"" + '\n')
+        f.write(str('DUT2_Manufacturer') + "=" + "\"" + DUT2_Manufacturer + "\"" + '\n')
+        f.write(str('DUT2_Manufacture_Date') + "=" + "\"" + DUT2_Manufacture_Date + "\"" + '\n')
+        f.write(str('DUT2_Vendor') + "=" + "\"" + DUT2_Vendor + "\"" + '\n')
+        f.write(str('DUT2_Platform_Name') + "=" + "\"" + DUT2_Platform_Name + "\"" + '\n')
+        f.write(str('DUT2_Device_Version') + "=" + "\"" + DUT2_Device_Version + "\"" + '\n')
+        f.write(str('DUT2_Label_Revision') + "=" + "\"" + DUT2_Label_Revision + "\"" + '\n')
+        f.write(str('DUT2_Country_Code') + "=" + "\"" + DUT2_Country_Code + "\"" + '\n')
+        f.write(str('DUT2_Diag_Version') + "=" + "\"" + DUT2_Diag_Version + "\"" + '\n')
+        f.write(str('DUT2_Service_Tag') + "=" + "\"" + DUT2_Service_Tag + "\"" + '\n')
+        f.write(str('DUT2_ONIE_Version') + "=" + "\"" + DUT2_ONIE_Version + "\"" + '\n')        
+    #except NameError:
+    #    print(Fore.RED + "DUT2_IP is not defined in the configuration file")
 
     result = path.exists(new_filename)
 
