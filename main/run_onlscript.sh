@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source ./../Scripts/testcaseList.sh
 
 Usage ()
 {
@@ -120,7 +119,7 @@ do
 	esac
 done
 
-#export 
+exec 1> >(tee -a "./log/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").txt")
 
 # Check whether all mandatory command-line arguments are provided as input. If not, return error and print help text.
 
@@ -130,12 +129,12 @@ CheckTestbedFilePresence $TESTBED_PATH $TESTBED
 
 #Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
 
-DEBUG='-vvv'
+DEBUG='-vv --tb=no'
 CONSOLE_LOG='-s'
 FILENAME=${TEMPFILE}
 EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
-pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} --alluredir=web
+pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} 
 
 
 # Gather system information from all DUT's and store it in the tmp file.
@@ -145,18 +144,29 @@ EXTRA_CLI_ARGUMENT_LIST="--filename ${FILENAME}"
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
 
 #Testcase execution start
-
+echo ${REPORT}
 echo "======================== Testcase exection starts ==================================="
 
 if [[ ! -z ${SCRIPT} ]]; then
-	for testcase in $TESTCASES
-	do
-		pytest ${DEBUG} ${CONSOLE_LOG} ./../Scripts/${testcase} 
-	done
+	if [[ ! -z ${REPORT} ]]; then
+		for testcase in $TESTCASES
+		do
+			pytest ${DEBUG} ${CONSOLE_LOG} ./../Scripts/${testcase} --alluredir=${REPORT}
+		done
+	else
+		for testcase in $TESTCASES
+                do
+                        pytest ${DEBUG} ${CONSOLE_LOG} ./../Scripts/${testcase} 
+                done
+	fi
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} ${CONSOLE_LOG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST}
+	if [[ ! -z ${REPORT} ]]; then
+		pytest ${DEBUG} ${CONSOLE_LOG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${REPORT} --html=./log/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").html
+	else
+		pytest ${DEBUG} ${CONSOLE_LOG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST}
+	fi
 fi
 
 echo "======================== Testcase exection end  ====================================="
