@@ -1,0 +1,52 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "children" : [ {
+    "name" : "alexander-Virtual-Machine",
+    "children" : [ {
+      "name" : "16037-MainThread",
+      "children" : [ {
+        "name" : "test_CheckPSUType[tmp_testbed]",
+        "uid" : "f8cc5f7c7689ab7a",
+        "parentUid" : "81177772367753709471b7ca9199ff64",
+        "status" : "passed",
+        "time" : {
+          "start" : 1657191097220,
+          "stop" : 1657191097458,
+          "duration" : 238
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'tmp_testbed'" ]
+      }, {
+        "name" : "test_CheckPSUStatus[tmp_testbed]",
+        "uid" : "6e800488c4ea2de7",
+        "parentUid" : "81177772367753709471b7ca9199ff64",
+        "status" : "passed",
+        "time" : {
+          "start" : 1657191096996,
+          "stop" : 1657191097218,
+          "duration" : 222
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'tmp_testbed'" ]
+      }, {
+        "name" : "test_CheckPSUState[tmp_testbed]",
+        "uid" : "1bb5ced22b48ef63",
+        "parentUid" : "81177772367753709471b7ca9199ff64",
+        "status" : "passed",
+        "time" : {
+          "start" : 1657191096709,
+          "stop" : 1657191096993,
+          "duration" : 284
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'tmp_testbed'" ]
+      } ],
+      "uid" : "81177772367753709471b7ca9199ff64"
+    } ],
+    "uid" : "8a1ed126ef7963d9a885db00e1f3b02c"
+  } ],
+  "name" : "timeline"
+}

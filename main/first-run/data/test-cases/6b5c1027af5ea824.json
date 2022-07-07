@@ -1,0 +1,74 @@
+{
+  "uid" : "6b5c1027af5ea824",
+  "name" : "test_CheckPSUState[tmp_testbed]",
+  "fullName" : "test_19#test_CheckPSUState",
+  "historyId" : "63f1a99603acec79bd5d281b33be843c",
+  "time" : {
+    "start" : 1657190745425,
+    "stop" : 1657190745728,
+    "duration" : 303
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "test_importlib",
+    "time" : {
+      "start" : 1657190745424,
+      "stop" : 1657190745424,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "Sanity"
+  }, {
+    "name" : "tag",
+    "value" : "All"
+  }, {
+    "name" : "suite",
+    "value" : "test_19"
+  }, {
+    "name" : "host",
+    "value" : "alexander-Virtual-Machine"
+  }, {
+    "name" : "thread",
+    "value" : "15749-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_19"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "filename",
+    "value" : "'tmp_testbed'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "All", "Sanity" ]
+  },
+  "source" : "6b5c1027af5ea824.json",
+  "parameterValues" : [ "'tmp_testbed'" ]
+}

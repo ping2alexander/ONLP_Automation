@@ -143,13 +143,3 @@ def Get_LED_Value(IPAddress, LED, key):
         return -1
 
 
-
-res1 = Get_LED_Value('192.168.1.6', 4, 'Name')
-res2 = Get_LED_Value('192.168.1.6', 4, 'Description')
-res3 = Get_LED_Value('192.168.1.6', 4, 'State')
-res4 = Get_LED_Value('192.168.1.6', 4, 'Mode')
-
-print(res1)
-print(res2)
-print(res3)
-print(res4)

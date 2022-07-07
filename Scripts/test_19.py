@@ -32,3 +32,5 @@ def test_CheckPSUState(test_importlib):
 
     assert val == 'Present'
 
+    print(val)
+

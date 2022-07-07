@@ -53,14 +53,17 @@ def test_reachability(test_importlib):
         DUTInfo.DUT1_IP
 
         print(Fore.GREEN + "DUT1_IP variable is defined!!!")
+        print(Style.RESET_ALL)
         command = "ping -c 5 " + DUTInfo.DUT1_IP
 
         HOST_Status = os.system(command)
 
         if HOST_Status is 0:
             print(Fore.GREEN + "DUT1 - {} - Device is reachable - success!!!".format(DUTInfo.DUT1_IP))
+            print(Style.RESET_ALL)
         else:
             print(Fore.RED + "DUT1 - {} - Device is NOT reachable  -  Failed!!!".format(DUTInfo.DUT1_IP))
+            print(Style.RESET_ALL)
             dut1_test = 0
     except NameError:
         print(Fore.RED + "DUT1_IP variable is NOT defined anywhere in the configuration file")
@@ -70,17 +73,21 @@ def test_reachability(test_importlib):
         DUTInfo.DUT2_IP
 
         print("DUT2_IP variable is defined!!!")
+        print(Style.RESET_ALL)
         command = "ping -c 5 " + DUTInfo.DUT2_IP
 
         HOST_Status = os.system(command)
 
         if HOST_Status is 0:
             print(Fore.GREEN + "DUT2 -{} - Device is reachable - Success!!!".format(DUTInfo.DUT2_IP))
+            print(Style.RESET_ALL)
         else:
             print(Fore.RED + "DUT2 - {} - Device is NOT reachable  - Failed!!!".format(DUTInfo.DUT2_IP))
+            print(Style.RESET_ALL)
             dut2_test = 0;
     except NameError:
         print(Fore.RED + "DUT2_IP variable is NOT defined anywhere in the configuration file")
+        print(Style.RESET_ALL)
         return
 
 
@@ -91,8 +98,10 @@ def test_collect_sysinfo(test_importlib):
     try:
         DUTInfo.DUT1_IP
         print(Fore.GREEN + "DUT1_IP variable is defined!!!")
+        print(Style.RESET_ALL)
     except NameError:
         print(Fore.RED + "NOT OK")
+        print(Style.RESET_ALL)
         exit
 
     DUT1 = Login(DUTInfo.DUT1_IP, DUTInfo.DUT1_Username, DUTInfo.DUT1_Password)
@@ -145,6 +154,7 @@ def test_collect_sysinfo(test_importlib):
     try:
         DUTInfo.DUT2_IP
         print(Fore.GREEN + "DUT2_IP variable is defined!!!")
+        print(Style.RESET_ALL)
     except:
         return
      
