@@ -13,39 +13,50 @@ Usage ()
 	echo -e "\e[1;32m-m <pytestmarker>		- Specity the testcase groupname"
 	echo -e "\e[1;33m				  Example: -m \"All\" or -m \"Sanity\"" 
 	echo -e "\e[1;33m					   -m \"Belgite\""
+	echo -e "\e[1;37m" ;# Default font color:White
 							  
 }
 
 CheckTestbedFilePresence ()
 {
-	echo "***************************************************"
-	echo "            Check testbed file presence            "
-	echo "***************************************************"
+	echo " ---------------------------------------------------------------------------------------------------- "
+	echo "            Check if testbed file exist            "
+	echo " ---------------------------------------------------------------------------------------------------- "
 
-	echo "Check testbed file is present in the specific location"
+	echo "Check if testbed file is present in the specific location"
 	echo "Tesbed file location: $1"
 	echo "Testbed filename: $2"
 	
 	if [ ! -f "$1/$2" ]
 	then
-		echo "\e[1;31mError:Specified testbed file is not present in the location:  $1"
+		echo -e "\e[1;31mError:Specified testbed file is not present in the location:  $1"
+		echo -e "\e[1;37m" ;# Default font color:White
 		exit 1;
 	else
-		echo "\e[1;32mTestbed file exist in the location"
+		echo -e "\e[1;32mTestbed file exist in the location"
+		echo -e "\e[1;37m" ;# Default font color:White
 	fi
-	
 }
 
 
 ValidateCommandlineInput ()
 {
 	if [[ -z ${TESTBED} ]]; then 
-		echo -e "\e[1;31mError: Argument is missing - TESTBED file is not set"
+		echo -e "\e[1;31mError: Mandatory commandline arguments are missing - please check usage information"
+		echo -e "\e[1;37m" ;# Default font color:White
 		Usage
 		exit 1;
 	fi
+	if [[ -z ${TEMPFILE} ]]; then
+                echo -e "\e[1;31mError: Mandatory commandline arguments are missing - please check usage information"
+		echo -e "\e[1;37m" ;# Default font color:White
+                Usage
+                exit 1;
+        fi
 	if [[ -z ${MARKER} ]]; then
 		MARKER='All'
+		echo -e "\e[1;32mTestcase groupname(pytest marker) is not given as a input argument. Choosing default argument \"All\""
+		echo -e "\e[1;37m"
 	fi
 	
 	#if [[ -z ${SCRIPT} && -z ${LIST} ]]; then 
@@ -57,13 +68,15 @@ ValidateCommandlineInput ()
 	#	TESTCASES=${SCRIPT}
 	if [[ ! -z ${SCRIPT} ]]; then
                TESTCASES=${SCRIPT}
+	       echo -e "\e[1;32mIndividual script mode is selected.!!!"
+	       echo -e "\e[1;37m" ;# Default font color:White
 	fi
 	#elif [[ ! -z ${LIST} ]] ; then
         #        TESTCASES=${LIST}
 	#else
 	#	TESTCASES=${CommonTestcase_array[*]}
 	#fi
-
+	return 1
 }
 
 #Setting environment variable
@@ -119,23 +132,48 @@ do
 	esac
 done
 
-exec 1> >(tee -a "./log/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").txt")
+#exec 1> >(tee -a "./log/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").txt")
+
+echo ""
+
+echo " ---------------------------------------------------------------------------------------------------- "
+echo "|                                                                                                    |"
+echo "|                     ONL(Open Network Linux) Automation                                             |"
+echo "|                                                                                                    |"
+echo " ---------------------------------------------------------------------------------------------------- "
 
 # Check whether all mandatory command-line arguments are provided as input. If not, return error and print help text.
 
+
+echo -e "\nStep:1 - Validating the commandline arguments passed to the main shell script \n"
+
 ValidateCommandlineInput
+
+echo -e "\e[1;33mUser Input Arguments"
+echo -e "\e[1;33m===================="
+echo -e "\e[1;33mTestbed Filename  : ${TESTBED}"
+echo -e "\e[1;33mTemp Filename     : ${TEMPFILE}"
+echo -e "\e[1;33mTestcase groupname: ${MARKER}"
+echo -e "\e[1;37m" ; # Default font color
 
 CheckTestbedFilePresence $TESTBED_PATH $TESTBED
 
 #Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
 
-DEBUG='-vv --tb=no'
+DEBUG='-v'
 CONSOLE_LOG='-s'
 FILENAME=${TEMPFILE}
 EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} 
 
+echo -e "\e[1;33m-------------------------------------------------------------------"
+echo -e "\e[1;33m                     Topology Diagram                              "
+echo -e "\e[1;33m-------------------------------------------------------------------"
+
+python3 ./topology.py -f ${TESTBED}
+
+echo -e "\e[1;37m" ;# Default font color:White
 
 # Gather system information from all DUT's and store it in the tmp file.
 
@@ -144,8 +182,13 @@ EXTRA_CLI_ARGUMENT_LIST="--filename ${FILENAME}"
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
 
 #Testcase execution start
-echo ${REPORT}
-echo "======================== Testcase exection starts ==================================="
+
+echo -e "\e[1;33m------------------------------------------------------------------------------------------"
+echo -e "\e[1;33m                                                                                          |"
+echo -e "\e[1;33m                                   TESTCASE EXECUTION START                               |"
+echo -e "\e[1;33m                                                                                          |"
+echo -e "\e[1;33m------------------------------------------------------------------------------------------"
+echo -e "\e[1;37m" ;# Default font color:White
 
 if [[ ! -z ${SCRIPT} ]]; then
 	if [[ ! -z ${REPORT} ]]; then
@@ -169,6 +212,6 @@ if [[ ! -z ${MARKER} ]]; then
 	fi
 fi
 
-echo "======================== Testcase exection end  ====================================="
+echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ====================================="
 
 #Testcase exection end

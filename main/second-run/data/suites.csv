@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jul 07 16:21:36 IST 2022","Thu Jul 07 16:21:36 IST 2022","284","","test_19","","","","test_CheckPSUState[tmp_testbed]",""
+"passed","Thu Jul 07 16:21:37 IST 2022","Thu Jul 07 16:21:37 IST 2022","238","","test_22","","","","test_CheckPSUType[tmp_testbed]",""
+"passed","Thu Jul 07 16:21:36 IST 2022","Thu Jul 07 16:21:37 IST 2022","222","","test_20","","","","test_CheckPSUStatus[tmp_testbed]",""

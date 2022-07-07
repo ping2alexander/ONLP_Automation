@@ -1,0 +1,44 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "test_CheckPSUState[tmp_testbed]",
+    "uid" : "1bb5ced22b48ef63",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1657191096709,
+      "stop" : 1657191096993,
+      "duration" : 284
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "'tmp_testbed'" ]
+  }, {
+    "name" : "test_CheckPSUStatus[tmp_testbed]",
+    "uid" : "6e800488c4ea2de7",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1657191096996,
+      "stop" : 1657191097218,
+      "duration" : 222
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "'tmp_testbed'" ]
+  }, {
+    "name" : "test_CheckPSUType[tmp_testbed]",
+    "uid" : "f8cc5f7c7689ab7a",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1657191097220,
+      "stop" : 1657191097458,
+      "duration" : 238
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "'tmp_testbed'" ]
+  } ],
+  "name" : "behaviors"
+}
