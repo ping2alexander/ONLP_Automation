@@ -12,7 +12,7 @@ sys.path.insert(0, libpath)
 
 from ssh_login import Login
 from DeviceInfo import *
-from CheckKeyValue import *
+from GetKeyValue import *
 
 @pytest.fixture
 def test_importlib(filename):
@@ -30,5 +30,5 @@ def test_CheckPSUType(test_importlib):
     DUTInfo = test_importlib
     val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Type')
 
-    assert val == 'AC'
+    assert val == 'aaa'
 

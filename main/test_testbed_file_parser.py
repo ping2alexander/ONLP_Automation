@@ -5,6 +5,7 @@ import time
 import logging
 import os.path
 import sys
+from colorama import Fore, Back, Style
 
 parentdir = os.path.abspath(os.path.join(__file__,"../.."))
 path = parentdir + '/Lib'
@@ -35,8 +36,8 @@ def test_convert_yml_to_dict(testbed):
     cfg = './../cfg/' + testbed
     with open(cfg, 'r') as f:
         my_dict = yaml.safe_load(f)
-    print(my_dict)
-    print(type(my_dict))
+    #print(my_dict)
+    #print(type(my_dict))
     return my_dict
 
 @pytest.fixture
@@ -80,7 +81,7 @@ def test_createTmpFile(filename, testbed):
 def test_Populate_TmpFile(test_convert_yml_to_dict):
     global new_filename
     temp = test_convert_yml_to_dict
-    print(temp)
+    #print(temp)
     temp1 = './../tmp/'
     new_filename = temp1 + new_filename
     print('\n')
@@ -154,13 +155,16 @@ def test_Populate_TmpFile(test_convert_yml_to_dict):
         try:
             with open(new_filename, 'r') as r:
                 data = r.read()
-                print("********************************************************************")
-                print(new_filename)
-                print("********************************************************************")
-                print(data)
+                #print("********************************************************************")
+                #print(new_filename)
+                #print("********************************************************************")
+                #print(data)
         except Exception as e:
             logging.error("Exception occurred", exc_info=True)
     else:
         logmessage("Temp file is NOT created", logging.ERROR)
+
+    print(Fore.GREEN + "TMP file is created successfully !!!")
+    return
 
 

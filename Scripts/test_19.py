@@ -12,7 +12,7 @@ sys.path.insert(0, libpath)
 
 from ssh_login import Login
 from DeviceInfo import *
-from CheckKeyValue import *
+from GetKeyValue import *
 
 @pytest.fixture
 def test_importlib(filename):
@@ -21,6 +21,7 @@ def test_importlib(filename):
     sys.path.insert(1, tmppath)
 
     Tmp = importlib.import_module(filename)
+    print(Tmp)
     return Tmp;
 
 @pytest.mark.All
