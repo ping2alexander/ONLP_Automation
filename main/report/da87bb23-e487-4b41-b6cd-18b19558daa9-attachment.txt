@@ -1,3 +1,0 @@
-<class 'dict'>
-<class 'dict'>
-Questone

@@ -1,0 +1,106 @@
+
+ ---------------------------------------------------------------------------------------------------- 
+|                                                                                                    |
+|                     ONL(Open Network Linux) Automation                                             |
+|                                                                                                    |
+ ---------------------------------------------------------------------------------------------------- 
+
+Step:1 - Validating the commandline arguments passed to the main shell script 
+
+[1;33mUser Input Arguments
+[1;33m====================
+[1;33mTestbed Filename  : testbed.yml
+[1;33mTemp Filename     : tmp_testbed
+[1;33mTestcase groupname: Sanityls
+[1;37m
+ ---------------------------------------------------------------------------------------------------- 
+            Check if testbed file exist            
+ ---------------------------------------------------------------------------------------------------- 
+Check if testbed file is present in the specific location
+Tesbed file location: /home/alexander/ONLP_Automation/cfg
+Testbed filename: testbed.yml
+[1;32mTestbed file exist in the location
+[1;37m
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-122-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 4 items
+
+test_testbed_file_parser.py::test_parse_testbed_file[testbed.yml] {'HardwareList': {'DUT1': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}, 'DUT2': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}}, 'Connection': {'DUT1': {'interfaces': [{'LocalPort': 'Ethernet1', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet11'}, {'LocalPort': 'Ethernet2', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet12'}, {'LocalPort': 'Ethernet3', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet13'}, {'LocalPort': 'Ethernet4', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet14'}]}, 'DUT2': {'interfaces': [{'LocalPort': 'Ethernet11', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet1'}, {'LocalPort': 'Ethernet12', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet2'}, {'LocalPort': 'Ethernet13', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet3'}, {'LocalPort': 'Ethernet14', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet4'}]}}}
+<class 'dict'>
+PASSED
+test_testbed_file_parser.py::test_CheckKeyExist[testbed.yml] {'HardwareList': {'DUT1': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}, 'DUT2': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}}, 'Connection': {'DUT1': {'interfaces': [{'LocalPort': 'Ethernet1', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet11'}, {'LocalPort': 'Ethernet2', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet12'}, {'LocalPort': 'Ethernet3', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet13'}, {'LocalPort': 'Ethernet4', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet14'}]}, 'DUT2': {'interfaces': [{'LocalPort': 'Ethernet11', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet1'}, {'LocalPort': 'Ethernet12', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet2'}, {'LocalPort': 'Ethernet13', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet3'}, {'LocalPort': 'Ethernet14', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet4'}]}}}
+<class 'dict'>
+PASSED
+test_testbed_file_parser.py::test_createTmpFile[tmp_testbed-testbed.yml] PASSED
+test_testbed_file_parser.py::test_Populate_TmpFile[testbed.yml] {'HardwareList': {'DUT1': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}, 'DUT2': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}}, 'Connection': {'DUT1': {'interfaces': [{'LocalPort': 'Ethernet1', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet11'}, {'LocalPort': 'Ethernet2', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet12'}, {'LocalPort': 'Ethernet3', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet13'}, {'LocalPort': 'Ethernet4', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet14'}]}, 'DUT2': {'interfaces': [{'LocalPort': 'Ethernet11', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet1'}, {'LocalPort': 'Ethernet12', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet2'}, {'LocalPort': 'Ethernet13', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet3'}, {'LocalPort': 'Ethernet14', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet4'}]}}}
+<class 'dict'>
+{'HardwareList': {'DUT1': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}, 'DUT2': {'Hardware_type': 'Questone', 'access': {'protocol': 'ssh', 'ip': '192.168.1.7', 'port': 22}, 'credentials': {'username': 'alexander', 'password': 'Dafne@140820'}}}, 'Connection': {'DUT1': {'interfaces': [{'LocalPort': 'Ethernet1', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet11'}, {'LocalPort': 'Ethernet2', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet12'}, {'LocalPort': 'Ethernet3', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet13'}, {'LocalPort': 'Ethernet4', 'RemoteDevice': 'DUT2', 'RemotePort': 'Ethernet14'}]}, 'DUT2': {'interfaces': [{'LocalPort': 'Ethernet11', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet1'}, {'LocalPort': 'Ethernet12', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet2'}, {'LocalPort': 'Ethernet13', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet3'}, {'LocalPort': 'Ethernet14', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet4'}]}}}
+
+
+********************************************************************
+./../tmp/tmp_testbed.py
+********************************************************************
+DUT1_HwType="Questone"
+DUT1_Protocol="ssh"
+DUT1_IP="192.168.1.7"
+DUT1_Username="alexander"
+DUT1_Password="Dafne@140820"
+DUT2_HwType="Questone"
+DUT2_Protocol="ssh"
+DUT2_IP="192.168.1.7"
+DUT2_Username="alexander"
+DUT2_Password="Dafne@140820"
+Trunk = dict()
+Trunk[1] = dict()
+Trunk[1][2] = dict()
+Trunk[1][2][1]="Ethernet1"
+Trunk[1][2][2]="Ethernet2"
+Trunk[1][2][3]="Ethernet3"
+Trunk[1][2][4]="Ethernet4"
+Trunk[2] = dict()
+Trunk[2][1] = dict()
+Trunk[2][1][1]="Ethernet11"
+Trunk[2][1][2]="Ethernet12"
+Trunk[2][1][3]="Ethernet13"
+Trunk[2][1][4]="Ethernet14"
+
+PASSED
+
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 4 passed, 1 warning in 0.09s =========================
+[1;33m-------------------------------------------------------------------
+[1;33m                     Topology Diagram                              
+[1;33m-------------------------------------------------------------------
+Number of DUTs: 2
+Number of Trunks: 4
+ ------------------------                                                  ------------------------
+|                        |(Ethernet1)-------------------------(Ethernet11)|                        |
+|                        |                                                |                        |
+|          DUT1          |(Ethernet2)-------------------------(Ethernet12)|          DUT2          |
+|                        |                                                |                        |
+|                        |(Ethernet3)-------------------------(Ethernet13)|                        |
+|                        |                                                |                        |
+|                        |(Ethernet4)-------------------------(Ethernet14)|                        |
+|                        |                                                |                        |
+ ------------------------                                                  ------------------------
+
+[1;37m
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-122-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 2 items
+
+test_collectSystemData.py::test_reachability[tmp_testbed] PING 192.168.1.7 (192.168.1.7) 56(84) bytes of data.
+64 bytes from 192.168.1.7: icmp_seq=1 ttl=63 time=35.9 ms

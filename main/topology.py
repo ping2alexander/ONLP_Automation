@@ -36,8 +36,8 @@ if 'Connection' in data:
     num_of_trunk  = len(data['Connection']['DUT1']['interfaces'])
 
 
-print("Number of DUTs: {}".format(num_of_dut))
-print("Number of Trunks: {}".format(num_of_trunk))
+#print("Number of DUTs: {}".format(num_of_dut))
+#print("Number of Trunks: {}".format(num_of_trunk))
 
 if num_of_dut == 2:
     print (" ", end='')

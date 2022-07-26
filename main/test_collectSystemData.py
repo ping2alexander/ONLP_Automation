@@ -97,7 +97,7 @@ def test_collect_sysinfo(test_importlib):
     DUTInfo = test_importlib
     try:
         DUTInfo.DUT1_IP
-        print(Fore.GREEN + "DUT1_IP variable is defined!!!")
+        print(Fore.GREEN + "\nDUT1_IP variable is defined!!!")
         print(Style.RESET_ALL)
     except NameError:
         print(Fore.RED + "NOT OK")
@@ -211,9 +211,9 @@ def test_collect_sysinfo(test_importlib):
         try:
             with open(new_filename, 'r') as r:
                 data = r.read()
-                print("********************************************************************")
-                print(new_filename)
-                print("********************************************************************")
+                print(Fore.GREEN + "********************************************************************")
+                print(Fore.GREEN + "Temp file output")
+                print(Fore.GREEN + "********************************************************************")
                 print(data)
         except Exception as e:
             logging.error("Exception occurred", exc_info=True)
