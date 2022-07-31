@@ -1,13 +1,13 @@
 DUT1_HwType="Questone"
 DUT1_Protocol="ssh"
 DUT1_IP="192.168.1.7"
-DUT1_Username="alexander"
-DUT1_Password="Dafne@140820"
+DUT1_Username="root"
+DUT1_Password="onl"
 DUT2_HwType="Questone"
 DUT2_Protocol="ssh"
 DUT2_IP="192.168.1.7"
-DUT2_Username="alexander"
-DUT2_Password="Dafne@140820"
+DUT2_Username="root"
+DUT2_Password="onl"
 Trunk = dict()
 Trunk[1] = dict()
 Trunk[1][2] = dict()

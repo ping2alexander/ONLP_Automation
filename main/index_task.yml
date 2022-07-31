@@ -1,0 +1,10 @@
+---
+- name: Add new table entry in the index table
+  hosts: 127.0.0.1
+  tasks:
+    - name: Table values
+      include_vars: index_var.yml
+    - name: Copy values from var file to template file
+      template:
+        src: index_template.j2
+        dest: ./index.html

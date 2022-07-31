@@ -1,0 +1,3072 @@
+
+ ---------------------------------------------------------------------------------------------------- 
+|                                                                                                    |
+|                     ONL(Open Network Linux) Automation                                             |
+|                                                                                                    |
+ ---------------------------------------------------------------------------------------------------- 
+*****************************************************************************************
+Step:1 - Validating the commandline arguments passed to the main shell script
+*****************************************************************************************
+[1;32mTestcase groupname(pytest marker) is not given as a input argument. Choosing default argument "All"
+[1;37m
+[1;34mCommandline arguments and environment variable declared
+[1;34m*******************************************************
+[1;34m|	Testbed Filename       : testbed.yml
+[1;34m|	Temp Filename          : testbed
+[1;34m|	Testcase groupname     : All
+[1;34m|	Script location        : /home/alexander/ONLP_Automation/Scripts
+[1;34m|	Testbed file location  : /home/alexander/ONLP_Automation/cfg
+[1;34m|	Library file location  : /home/alexander/ONLP_Automation/Lib
+[1;37m
+*****************************************************************************************
+Step:2 - Check testbed file existence
+*****************************************************************************************
+Check if testbed file is present in the specific location
+Tesbed file location: /home/alexander/ONLP_Automation/cfg
+Testbed filename: testbed.yml
+[1;32mSuccess: Testbed file is present in the configuration directory !!!
+[1;37m
+[1;36m******************************************************************************************
+[1;36mStep:3 Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
+[1;36m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-122-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 4 items
+
+test_testbed_file_parser.py::test_parse_testbed_file[testbed.yml] PASSED
+test_testbed_file_parser.py::test_CheckKeyExist[testbed.yml] PASSED
+test_testbed_file_parser.py::test_createTmpFile[testbed-testbed.yml] PASSED
+test_testbed_file_parser.py::test_Populate_TmpFile[testbed.yml] 
+
+[32mTMP file is created successfully !!!
+PASSED
+
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 4 passed, 1 warning in 0.12s =========================
+[1;35m******************************************************************************************
+[1;35mStep: 5                   Topology Diagram                              
+[1;35m******************************************************************************************
+ ------------------------                                                  ------------------------
+|                        |(Ethernet1)-------------------------(Ethernet11)|                        |
+|                        |                                                |                        |
+|          DUT1          |(Ethernet2)-------------------------(Ethernet12)|          DUT2          |
+|                        |                                                |                        |
+|                        |(Ethernet3)-------------------------(Ethernet13)|                        |
+|                        |                                                |                        |
+|                        |(Ethernet4)-------------------------(Ethernet14)|                        |
+|                        |                                                |                        |
+ ------------------------                                                  ------------------------
+
+[1;37m
+[1;34m******************************************************************************************
+[1;34mStep: 5                   DUTs PING test                              
+[1;34m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-122-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 2 items
+
+test_collectSystemData.py::test_reachability[testbed] PING 192.168.1.7 (192.168.1.7) 56(84) bytes of data.
+64 bytes from 192.168.1.7: icmp_seq=1 ttl=63 time=2.37 ms
+64 bytes from 192.168.1.7: icmp_seq=2 ttl=63 time=2.78 ms
+64 bytes from 192.168.1.7: icmp_seq=3 ttl=63 time=1.53 ms
+64 bytes from 192.168.1.7: icmp_seq=4 ttl=63 time=2.77 ms
+64 bytes from 192.168.1.7: icmp_seq=5 ttl=63 time=2.23 ms
+
+--- 192.168.1.7 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4005ms
+rtt min/avg/max/mdev = 1.533/2.341/2.789/0.460 ms
+PING 192.168.1.7 (192.168.1.7) 56(84) bytes of data.
+64 bytes from 192.168.1.7: icmp_seq=1 ttl=63 time=2.28 ms
+64 bytes from 192.168.1.7: icmp_seq=2 ttl=63 time=2.98 ms
+64 bytes from 192.168.1.7: icmp_seq=3 ttl=63 time=2.41 ms
+64 bytes from 192.168.1.7: icmp_seq=4 ttl=63 time=4.42 ms
+64 bytes from 192.168.1.7: icmp_seq=5 ttl=63 time=2.33 ms
+
+--- 192.168.1.7 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4005ms
+rtt min/avg/max/mdev = 2.285/2.887/4.421/0.808 ms
+[32mDUT1_IP variable is defined!!!
+[0m
+[32mDUT1 - 192.168.1.7 - Device is reachable - success!!!
+[0m
+DUT2_IP variable is defined!!!
+[0m
+[32mDUT2 -192.168.1.7 - Device is reachable - Success!!!
+[0m
+PASSED
+test_collectSystemData.py::test_collect_sysinfo[testbed] [32m
+DUT1_IP variable is defined!!!
+[0m
+FAILED
+
+=================================== FAILURES ===================================
+________________________ test_collect_sysinfo[testbed] _________________________
+
+self = <ssh_login.Login object at 0x7fee48744208>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>           self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+
+../Lib/ssh_login.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7fee487444a8>
+hostname = '192.168.1.7', port = 22, username = 'root', password = 'onl'
+pkey = None, key_filename = None, timeout = None, allow_agent = False
+look_for_keys = False, compress = False
+sock = <socket.socket fd=5, family=AddressFamily.AF_INET, type=2049, proto=0, laddr=('172.22.92.133', 35086), raddr=('192.168.1.7', 22)>
+gss_auth = False, gss_kex = False, gss_deleg_creds = True, gss_host = None
+banner_timeout = None, auth_timeout = None, gss_trust_dns = True
+passphrase = None, disabled_algorithms = None
+
+    def connect(
+        self,
+        hostname,
+        port=SSH_PORT,
+        username=None,
+        password=None,
+        pkey=None,
+        key_filename=None,
+        timeout=None,
+        allow_agent=True,
+        look_for_keys=True,
+        compress=False,
+        sock=None,
+        gss_auth=False,
+        gss_kex=False,
+        gss_deleg_creds=True,
+        gss_host=None,
+        banner_timeout=None,
+        auth_timeout=None,
+        gss_trust_dns=True,
+        passphrase=None,
+        disabled_algorithms=None,
+    ):
+        """
+        Connect to an SSH server and authenticate to it.  The server's host key
+        is checked against the system host keys (see `load_system_host_keys`)
+        and any local host keys (`load_host_keys`).  If the server's hostname
+        is not found in either set of host keys, the missing host key policy
+        is used (see `set_missing_host_key_policy`).  The default policy is
+        to reject the key and raise an `.SSHException`.
+    
+        Authentication is attempted in the following order of priority:
+    
+            - The ``pkey`` or ``key_filename`` passed in (if any)
+    
+              - ``key_filename`` may contain OpenSSH public certificate paths
+                as well as regular private-key paths; when files ending in
+                ``-cert.pub`` are found, they are assumed to match a private
+                key, and both components will be loaded. (The private key
+                itself does *not* need to be listed in ``key_filename`` for
+                this to occur - *just* the certificate.)
+    
+            - Any key we can find through an SSH agent
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in
+              ``~/.ssh/``
+    
+              - When OpenSSH-style public certificates exist that match an
+                existing such private key (so e.g. one has ``id_rsa`` and
+                ``id_rsa-cert.pub``) the certificate will be loaded alongside
+                the private key and used for authentication.
+    
+            - Plain username/password auth, if a password was given
+    
+        If a private key requires a password to unlock it, and a password is
+        passed in, that password will be used to attempt to unlock the key.
+    
+        :param str hostname: the server to connect to
+        :param int port: the server port to connect to
+        :param str username:
+            the username to authenticate as (defaults to the current local
+            username)
+        :param str password:
+            Used for password authentication; is also used for private key
+            decryption if ``passphrase`` is not given.
+        :param str passphrase:
+            Used for decrypting private keys.
+        :param .PKey pkey: an optional private key to use for authentication
+        :param str key_filename:
+            the filename, or list of filenames, of optional private key(s)
+            and/or certs to try for authentication
+        :param float timeout:
+            an optional timeout (in seconds) for the TCP connect
+        :param bool allow_agent:
+            set to False to disable connecting to the SSH agent
+        :param bool look_for_keys:
+            set to False to disable searching for discoverable private key
+            files in ``~/.ssh/``
+        :param bool compress: set to True to turn on compression
+        :param socket sock:
+            an open socket or socket-like object (such as a `.Channel`) to use
+            for communication to the target host
+        :param bool gss_auth:
+            ``True`` if you want to use GSS-API authentication
+        :param bool gss_kex:
+            Perform GSS-API Key Exchange and user authentication
+        :param bool gss_deleg_creds: Delegate GSS-API client credentials or not
+        :param str gss_host:
+            The targets name in the kerberos database. default: hostname
+        :param bool gss_trust_dns:
+            Indicates whether or not the DNS is trusted to securely
+            canonicalize the name of the host being connected to (default
+            ``True``).
+        :param float banner_timeout: an optional timeout (in seconds) to wait
+            for the SSH banner to be presented.
+        :param float auth_timeout: an optional timeout (in seconds) to wait for
+            an authentication response.
+        :param dict disabled_algorithms:
+            an optional dict passed directly to `.Transport` and its keyword
+            argument of the same name.
+    
+        :raises:
+            `.BadHostKeyException` -- if the server's host key could not be
+            verified
+        :raises: `.AuthenticationException` -- if authentication failed
+        :raises:
+            `.SSHException` -- if there was any other error connecting or
+            establishing an SSH session
+        :raises socket.error: if a socket error occurred while connecting
+    
+        .. versionchanged:: 1.15
+            Added the ``banner_timeout``, ``gss_auth``, ``gss_kex``,
+            ``gss_deleg_creds`` and ``gss_host`` arguments.
+        .. versionchanged:: 2.3
+            Added the ``gss_trust_dns`` argument.
+        .. versionchanged:: 2.4
+            Added the ``passphrase`` argument.
+        .. versionchanged:: 2.6
+            Added the ``disabled_algorithms`` argument.
+        """
+        if not sock:
+            errors = {}
+            # Try multiple possible address families (e.g. IPv4 vs IPv6)
+            to_try = list(self._families_and_addresses(hostname, port))
+            for af, addr in to_try:
+                try:
+                    sock = socket.socket(af, socket.SOCK_STREAM)
+                    if timeout is not None:
+                        try:
+                            sock.settimeout(timeout)
+                        except:
+                            pass
+                    retry_on_signal(lambda: sock.connect(addr))
+                    # Break out of the loop on success
+                    break
+                except socket.error as e:
+                    # Raise anything that isn't a straight up connection error
+                    # (such as a resolution error)
+                    if e.errno not in (ECONNREFUSED, EHOSTUNREACH):
+                        raise
+                    # Capture anything else so we know how the run looks once
+                    # iteration is complete. Retain info about which attempt
+                    # this was.
+                    errors[addr] = e
+    
+            # Make sure we explode usefully if no address family attempts
+            # succeeded. We've no way of knowing which error is the "right"
+            # one, so we construct a hybrid exception containing all the real
+            # ones, of a subclass that client code should still be watching for
+            # (socket.error)
+            if len(errors) == len(to_try):
+                raise NoValidConnectionsError(errors)
+    
+        t = self._transport = Transport(
+            sock,
+            gss_kex=gss_kex,
+            gss_deleg_creds=gss_deleg_creds,
+            disabled_algorithms=disabled_algorithms,
+        )
+        t.use_compression(compress=compress)
+        t.set_gss_host(
+            # t.hostname may be None, but GSS-API requires a target name.
+            # Therefore use hostname as fallback.
+            gss_host=gss_host or hostname,
+            trust_dns=gss_trust_dns,
+            gssapi_requested=gss_auth or gss_kex,
+        )
+        if self._log_channel is not None:
+            t.set_log_channel(self._log_channel)
+        if banner_timeout is not None:
+            t.banner_timeout = banner_timeout
+        if auth_timeout is not None:
+            t.auth_timeout = auth_timeout
+    
+        if port == SSH_PORT:
+            server_hostkey_name = hostname
+        else:
+            server_hostkey_name = "[{}]:{}".format(hostname, port)
+        our_server_keys = None
+    
+        our_server_keys = self._system_host_keys.get(server_hostkey_name)
+        if our_server_keys is None:
+            our_server_keys = self._host_keys.get(server_hostkey_name)
+        if our_server_keys is not None:
+            keytype = our_server_keys.keys()[0]
+            sec_opts = t.get_security_options()
+            other_types = [x for x in sec_opts.key_types if x != keytype]
+            sec_opts.key_types = [keytype] + other_types
+    
+        t.start_client(timeout=timeout)
+    
+        # If GSS-API Key Exchange is performed we are not required to check the
+        # host key, because the host is authenticated via GSS-API / SSPI as
+        # well as our client.
+        if not self._transport.gss_kex_used:
+            server_key = t.get_remote_server_key()
+            if our_server_keys is None:
+                # will raise exception if the key is rejected
+                self._policy.missing_host_key(
+                    self, server_hostkey_name, server_key
+                )
+            else:
+                our_key = our_server_keys.get(server_key.get_name())
+                if our_key != server_key:
+                    if our_key is None:
+                        our_key = list(our_server_keys.values())[0]
+                    raise BadHostKeyException(hostname, server_key, our_key)
+    
+        if username is None:
+            username = getpass.getuser()
+    
+        if key_filename is None:
+            key_filenames = []
+        elif isinstance(key_filename, string_types):
+            key_filenames = [key_filename]
+        else:
+            key_filenames = key_filename
+    
+        self._auth(
+            username,
+            password,
+            pkey,
+            key_filenames,
+            allow_agent,
+            look_for_keys,
+            gss_auth,
+            gss_kex,
+            gss_deleg_creds,
+            t.gss_host,
+>           passphrase,
+        )
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:446: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7fee487444a8>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+                self._transport.auth_password(username, password)
+                return
+            except SSHException as e:
+                saved_exception = e
+        elif two_factor:
+            try:
+                self._transport.auth_interactive_dumb(username)
+                return
+            except SSHException as e:
+                saved_exception = e
+    
+        # if we got an auth-failed exception earlier, re-raise it
+        if saved_exception is not None:
+>           raise saved_exception
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:766: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7fee487444a8>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+>               self._transport.auth_password(username, password)
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:753: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.Transport at 0x487445c0 (cipher aes128-ctr, 128 bits) (connected; awaiting auth)>
+username = 'root', password = 'onl', event = None, fallback = True
+
+    def auth_password(self, username, password, event=None, fallback=True):
+        """
+        Authenticate to the server using a password.  The username and password
+        are sent over an encrypted link.
+    
+        If an ``event`` is passed in, this method will return immediately, and
+        the event will be triggered once authentication succeeds or fails.  On
+        success, `is_authenticated` will return ``True``.  On failure, you may
+        use `get_exception` to get more detailed error information.
+    
+        Since 1.1, if no event is passed, this method will block until the
+        authentication succeeds or fails.  On failure, an exception is raised.
+        Otherwise, the method simply returns.
+    
+        Since 1.5, if no event is passed and ``fallback`` is ``True`` (the
+        default), if the server doesn't support plain password authentication
+        but does support so-called "keyboard-interactive" mode, an attempt
+        will be made to authenticate using this interactive mode.  If it fails,
+        the normal exception will be thrown as if the attempt had never been
+        made.  This is useful for some recent Gentoo and Debian distributions,
+        which turn off plain password authentication in a misguided belief
+        that interactive authentication is "more secure".  (It's not.)
+    
+        If the server requires multi-step authentication (which is very rare),
+        this method will return a list of auth types permissible for the next
+        step.  Otherwise, in the normal case, an empty list is returned.
+    
+        :param str username: the username to authenticate as
+        :param basestring password: the password to authenticate with
+        :param .threading.Event event:
+            an event to trigger when the authentication attempt is complete
+            (whether it was successful or not)
+        :param bool fallback:
+            ``True`` if an attempt at an automated "interactive" password auth
+            should be made if the server doesn't support normal password auth
+        :return:
+            list of auth types permissible for the next stage of
+            authentication (normally empty)
+    
+        :raises:
+            `.BadAuthenticationType` -- if password authentication isn't
+            allowed by the server for this user (and no event was passed in)
+        :raises:
+            `.AuthenticationException` -- if the authentication failed (and no
+            event was passed in)
+        :raises: `.SSHException` -- if there was a network error
+        """
+        if (not self.active) or (not self.initial_kex_done):
+            # we should never try to send the password unless we're on a secure
+            # link
+            raise SSHException("No existing session")
+        if event is None:
+            my_event = threading.Event()
+        else:
+            my_event = event
+        self.auth_handler = AuthHandler(self)
+        self.auth_handler.auth_password(username, password, my_event)
+        if event is not None:
+            # caller wants to wait for event themselves
+            return []
+        try:
+>           return self.auth_handler.wait_for_response(my_event)
+
+../../.local/lib/python3.6/site-packages/paramiko/transport.py:1564: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.auth_handler.AuthHandler object at 0x7fee486f9908>
+event = <threading.Event object at 0x7fee486f9898>
+
+    def wait_for_response(self, event):
+        max_ts = None
+        if self.transport.auth_timeout is not None:
+            max_ts = time.time() + self.transport.auth_timeout
+        while True:
+            event.wait(0.1)
+            if not self.transport.is_active():
+                e = self.transport.get_exception()
+                if (e is None) or issubclass(e.__class__, EOFError):
+                    e = AuthenticationException("Authentication failed.")
+                raise e
+            if event.is_set():
+                break
+            if max_ts is not None and max_ts <= time.time():
+                raise AuthenticationException("Authentication timeout.")
+    
+        if not self.is_authenticated():
+            e = self.transport.get_exception()
+            if e is None:
+                e = AuthenticationException("Authentication failed.")
+            # this is horrible.  Python Exception isn't yet descended from
+            # object, so type(e) won't work. :(
+            if issubclass(e.__class__, PartialAuthentication):
+                return e.allowed_types
+>           raise e
+E           paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+../../.local/lib/python3.6/site-packages/paramiko/auth_handler.py:259: AuthenticationException
+
+During handling of the above exception, another exception occurred:
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    def test_collect_sysinfo(test_importlib):
+        DUTInfo = test_importlib
+        try:
+            DUTInfo.DUT1_IP
+            print(Fore.GREEN + "\nDUT1_IP variable is defined!!!")
+            print(Style.RESET_ALL)
+        except NameError:
+            print(Fore.RED + "NOT OK")
+            print(Style.RESET_ALL)
+            exit
+    
+>       DUT1 = Login(DUTInfo.DUT1_IP, DUTInfo.DUT1_Username, DUTInfo.DUT1_Password)
+
+test_collectSystemData.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../Lib/ssh_login.py:10: in __init__
+    self.__deviceConnect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ssh_login.Login object at 0x7fee48744208>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+>       except AuthenticationException as err:
+E       NameError: name 'AuthenticationException' is not defined
+
+../Lib/ssh_login.py:18: NameError
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_collectSystemData.py::test_collect_sysinfo[testbed] - NameError: ...
+=================== 1 failed, 1 passed, 1 warning in 10.62s ====================
+496378
+Creating sub directory under Report and Result directory
+Directory doesn't exist. Creating now
+Directory created successfully !!!
+[1;33m------------------------------------------------------------------------------------------
+[1;33m                                                                                          |
+[1;33m                                   TESTCASE EXECUTION START                               |
+[1;33m                                                                                          |
+[1;33m------------------------------------------------------------------------------------------
+[1;37m
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-122-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/Scripts, configfile: pytest.ini
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 3 items
+
+../Scripts/test_19.py::test_CheckPSUState[testbed] FAILED                [ 33%]
+../Scripts/test_20.py::test_CheckPSUStatus[testbed] FAILED               [ 66%]
+../Scripts/test_22.py::test_CheckPSUType[testbed] FAILED                 [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_CheckPSUState[testbed] __________________________
+
+self = <ssh_login.Login object at 0x7f5cb74010f0>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>           self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+
+../Lib/ssh_login.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb7401198>
+hostname = '192.168.1.7', port = 22, username = 'root', password = 'onl'
+pkey = None, key_filename = None, timeout = None, allow_agent = False
+look_for_keys = False, compress = False
+sock = <socket.socket fd=11, family=AddressFamily.AF_INET, type=2049, proto=0, laddr=('172.22.92.133', 35088), raddr=('192.168.1.7', 22)>
+gss_auth = False, gss_kex = False, gss_deleg_creds = True, gss_host = None
+banner_timeout = None, auth_timeout = None, gss_trust_dns = True
+passphrase = None, disabled_algorithms = None
+
+    def connect(
+        self,
+        hostname,
+        port=SSH_PORT,
+        username=None,
+        password=None,
+        pkey=None,
+        key_filename=None,
+        timeout=None,
+        allow_agent=True,
+        look_for_keys=True,
+        compress=False,
+        sock=None,
+        gss_auth=False,
+        gss_kex=False,
+        gss_deleg_creds=True,
+        gss_host=None,
+        banner_timeout=None,
+        auth_timeout=None,
+        gss_trust_dns=True,
+        passphrase=None,
+        disabled_algorithms=None,
+    ):
+        """
+        Connect to an SSH server and authenticate to it.  The server's host key
+        is checked against the system host keys (see `load_system_host_keys`)
+        and any local host keys (`load_host_keys`).  If the server's hostname
+        is not found in either set of host keys, the missing host key policy
+        is used (see `set_missing_host_key_policy`).  The default policy is
+        to reject the key and raise an `.SSHException`.
+    
+        Authentication is attempted in the following order of priority:
+    
+            - The ``pkey`` or ``key_filename`` passed in (if any)
+    
+              - ``key_filename`` may contain OpenSSH public certificate paths
+                as well as regular private-key paths; when files ending in
+                ``-cert.pub`` are found, they are assumed to match a private
+                key, and both components will be loaded. (The private key
+                itself does *not* need to be listed in ``key_filename`` for
+                this to occur - *just* the certificate.)
+    
+            - Any key we can find through an SSH agent
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in
+              ``~/.ssh/``
+    
+              - When OpenSSH-style public certificates exist that match an
+                existing such private key (so e.g. one has ``id_rsa`` and
+                ``id_rsa-cert.pub``) the certificate will be loaded alongside
+                the private key and used for authentication.
+    
+            - Plain username/password auth, if a password was given
+    
+        If a private key requires a password to unlock it, and a password is
+        passed in, that password will be used to attempt to unlock the key.
+    
+        :param str hostname: the server to connect to
+        :param int port: the server port to connect to
+        :param str username:
+            the username to authenticate as (defaults to the current local
+            username)
+        :param str password:
+            Used for password authentication; is also used for private key
+            decryption if ``passphrase`` is not given.
+        :param str passphrase:
+            Used for decrypting private keys.
+        :param .PKey pkey: an optional private key to use for authentication
+        :param str key_filename:
+            the filename, or list of filenames, of optional private key(s)
+            and/or certs to try for authentication
+        :param float timeout:
+            an optional timeout (in seconds) for the TCP connect
+        :param bool allow_agent:
+            set to False to disable connecting to the SSH agent
+        :param bool look_for_keys:
+            set to False to disable searching for discoverable private key
+            files in ``~/.ssh/``
+        :param bool compress: set to True to turn on compression
+        :param socket sock:
+            an open socket or socket-like object (such as a `.Channel`) to use
+            for communication to the target host
+        :param bool gss_auth:
+            ``True`` if you want to use GSS-API authentication
+        :param bool gss_kex:
+            Perform GSS-API Key Exchange and user authentication
+        :param bool gss_deleg_creds: Delegate GSS-API client credentials or not
+        :param str gss_host:
+            The targets name in the kerberos database. default: hostname
+        :param bool gss_trust_dns:
+            Indicates whether or not the DNS is trusted to securely
+            canonicalize the name of the host being connected to (default
+            ``True``).
+        :param float banner_timeout: an optional timeout (in seconds) to wait
+            for the SSH banner to be presented.
+        :param float auth_timeout: an optional timeout (in seconds) to wait for
+            an authentication response.
+        :param dict disabled_algorithms:
+            an optional dict passed directly to `.Transport` and its keyword
+            argument of the same name.
+    
+        :raises:
+            `.BadHostKeyException` -- if the server's host key could not be
+            verified
+        :raises: `.AuthenticationException` -- if authentication failed
+        :raises:
+            `.SSHException` -- if there was any other error connecting or
+            establishing an SSH session
+        :raises socket.error: if a socket error occurred while connecting
+    
+        .. versionchanged:: 1.15
+            Added the ``banner_timeout``, ``gss_auth``, ``gss_kex``,
+            ``gss_deleg_creds`` and ``gss_host`` arguments.
+        .. versionchanged:: 2.3
+            Added the ``gss_trust_dns`` argument.
+        .. versionchanged:: 2.4
+            Added the ``passphrase`` argument.
+        .. versionchanged:: 2.6
+            Added the ``disabled_algorithms`` argument.
+        """
+        if not sock:
+            errors = {}
+            # Try multiple possible address families (e.g. IPv4 vs IPv6)
+            to_try = list(self._families_and_addresses(hostname, port))
+            for af, addr in to_try:
+                try:
+                    sock = socket.socket(af, socket.SOCK_STREAM)
+                    if timeout is not None:
+                        try:
+                            sock.settimeout(timeout)
+                        except:
+                            pass
+                    retry_on_signal(lambda: sock.connect(addr))
+                    # Break out of the loop on success
+                    break
+                except socket.error as e:
+                    # Raise anything that isn't a straight up connection error
+                    # (such as a resolution error)
+                    if e.errno not in (ECONNREFUSED, EHOSTUNREACH):
+                        raise
+                    # Capture anything else so we know how the run looks once
+                    # iteration is complete. Retain info about which attempt
+                    # this was.
+                    errors[addr] = e
+    
+            # Make sure we explode usefully if no address family attempts
+            # succeeded. We've no way of knowing which error is the "right"
+            # one, so we construct a hybrid exception containing all the real
+            # ones, of a subclass that client code should still be watching for
+            # (socket.error)
+            if len(errors) == len(to_try):
+                raise NoValidConnectionsError(errors)
+    
+        t = self._transport = Transport(
+            sock,
+            gss_kex=gss_kex,
+            gss_deleg_creds=gss_deleg_creds,
+            disabled_algorithms=disabled_algorithms,
+        )
+        t.use_compression(compress=compress)
+        t.set_gss_host(
+            # t.hostname may be None, but GSS-API requires a target name.
+            # Therefore use hostname as fallback.
+            gss_host=gss_host or hostname,
+            trust_dns=gss_trust_dns,
+            gssapi_requested=gss_auth or gss_kex,
+        )
+        if self._log_channel is not None:
+            t.set_log_channel(self._log_channel)
+        if banner_timeout is not None:
+            t.banner_timeout = banner_timeout
+        if auth_timeout is not None:
+            t.auth_timeout = auth_timeout
+    
+        if port == SSH_PORT:
+            server_hostkey_name = hostname
+        else:
+            server_hostkey_name = "[{}]:{}".format(hostname, port)
+        our_server_keys = None
+    
+        our_server_keys = self._system_host_keys.get(server_hostkey_name)
+        if our_server_keys is None:
+            our_server_keys = self._host_keys.get(server_hostkey_name)
+        if our_server_keys is not None:
+            keytype = our_server_keys.keys()[0]
+            sec_opts = t.get_security_options()
+            other_types = [x for x in sec_opts.key_types if x != keytype]
+            sec_opts.key_types = [keytype] + other_types
+    
+        t.start_client(timeout=timeout)
+    
+        # If GSS-API Key Exchange is performed we are not required to check the
+        # host key, because the host is authenticated via GSS-API / SSPI as
+        # well as our client.
+        if not self._transport.gss_kex_used:
+            server_key = t.get_remote_server_key()
+            if our_server_keys is None:
+                # will raise exception if the key is rejected
+                self._policy.missing_host_key(
+                    self, server_hostkey_name, server_key
+                )
+            else:
+                our_key = our_server_keys.get(server_key.get_name())
+                if our_key != server_key:
+                    if our_key is None:
+                        our_key = list(our_server_keys.values())[0]
+                    raise BadHostKeyException(hostname, server_key, our_key)
+    
+        if username is None:
+            username = getpass.getuser()
+    
+        if key_filename is None:
+            key_filenames = []
+        elif isinstance(key_filename, string_types):
+            key_filenames = [key_filename]
+        else:
+            key_filenames = key_filename
+    
+        self._auth(
+            username,
+            password,
+            pkey,
+            key_filenames,
+            allow_agent,
+            look_for_keys,
+            gss_auth,
+            gss_kex,
+            gss_deleg_creds,
+            t.gss_host,
+>           passphrase,
+        )
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:446: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb7401198>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+                self._transport.auth_password(username, password)
+                return
+            except SSHException as e:
+                saved_exception = e
+        elif two_factor:
+            try:
+                self._transport.auth_interactive_dumb(username)
+                return
+            except SSHException as e:
+                saved_exception = e
+    
+        # if we got an auth-failed exception earlier, re-raise it
+        if saved_exception is not None:
+>           raise saved_exception
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:766: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb7401198>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+>               self._transport.auth_password(username, password)
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:753: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.Transport at 0xb74013c8 (cipher aes128-ctr, 128 bits) (connected; awaiting auth)>
+username = 'root', password = 'onl', event = None, fallback = True
+
+    def auth_password(self, username, password, event=None, fallback=True):
+        """
+        Authenticate to the server using a password.  The username and password
+        are sent over an encrypted link.
+    
+        If an ``event`` is passed in, this method will return immediately, and
+        the event will be triggered once authentication succeeds or fails.  On
+        success, `is_authenticated` will return ``True``.  On failure, you may
+        use `get_exception` to get more detailed error information.
+    
+        Since 1.1, if no event is passed, this method will block until the
+        authentication succeeds or fails.  On failure, an exception is raised.
+        Otherwise, the method simply returns.
+    
+        Since 1.5, if no event is passed and ``fallback`` is ``True`` (the
+        default), if the server doesn't support plain password authentication
+        but does support so-called "keyboard-interactive" mode, an attempt
+        will be made to authenticate using this interactive mode.  If it fails,
+        the normal exception will be thrown as if the attempt had never been
+        made.  This is useful for some recent Gentoo and Debian distributions,
+        which turn off plain password authentication in a misguided belief
+        that interactive authentication is "more secure".  (It's not.)
+    
+        If the server requires multi-step authentication (which is very rare),
+        this method will return a list of auth types permissible for the next
+        step.  Otherwise, in the normal case, an empty list is returned.
+    
+        :param str username: the username to authenticate as
+        :param basestring password: the password to authenticate with
+        :param .threading.Event event:
+            an event to trigger when the authentication attempt is complete
+            (whether it was successful or not)
+        :param bool fallback:
+            ``True`` if an attempt at an automated "interactive" password auth
+            should be made if the server doesn't support normal password auth
+        :return:
+            list of auth types permissible for the next stage of
+            authentication (normally empty)
+    
+        :raises:
+            `.BadAuthenticationType` -- if password authentication isn't
+            allowed by the server for this user (and no event was passed in)
+        :raises:
+            `.AuthenticationException` -- if the authentication failed (and no
+            event was passed in)
+        :raises: `.SSHException` -- if there was a network error
+        """
+        if (not self.active) or (not self.initial_kex_done):
+            # we should never try to send the password unless we're on a secure
+            # link
+            raise SSHException("No existing session")
+        if event is None:
+            my_event = threading.Event()
+        else:
+            my_event = event
+        self.auth_handler = AuthHandler(self)
+        self.auth_handler.auth_password(username, password, my_event)
+        if event is not None:
+            # caller wants to wait for event themselves
+            return []
+        try:
+>           return self.auth_handler.wait_for_response(my_event)
+
+../../.local/lib/python3.6/site-packages/paramiko/transport.py:1564: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.auth_handler.AuthHandler object at 0x7f5cb73ae630>
+event = <threading.Event object at 0x7f5cb73ae5f8>
+
+    def wait_for_response(self, event):
+        max_ts = None
+        if self.transport.auth_timeout is not None:
+            max_ts = time.time() + self.transport.auth_timeout
+        while True:
+            event.wait(0.1)
+            if not self.transport.is_active():
+                e = self.transport.get_exception()
+                if (e is None) or issubclass(e.__class__, EOFError):
+                    e = AuthenticationException("Authentication failed.")
+                raise e
+            if event.is_set():
+                break
+            if max_ts is not None and max_ts <= time.time():
+                raise AuthenticationException("Authentication timeout.")
+    
+        if not self.is_authenticated():
+            e = self.transport.get_exception()
+            if e is None:
+                e = AuthenticationException("Authentication failed.")
+            # this is horrible.  Python Exception isn't yet descended from
+            # object, so type(e) won't work. :(
+            if issubclass(e.__class__, PartialAuthentication):
+                return e.allowed_types
+>           raise e
+E           paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+../../.local/lib/python3.6/site-packages/paramiko/auth_handler.py:259: AuthenticationException
+
+During handling of the above exception, another exception occurred:
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUState(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'State')
+
+../Scripts/test_19.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../Lib/GetKeyValue.py:29: in Get_PSU_Value
+    DUT = Login(IPAddress, 'root', 'onl')
+../Lib/ssh_login.py:10: in __init__
+    self.__deviceConnect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ssh_login.Login object at 0x7f5cb74010f0>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+>       except AuthenticationException as err:
+E       NameError: name 'AuthenticationException' is not defined
+
+../Lib/ssh_login.py:18: NameError
+---------------------------- Captured stdout setup -----------------------------
+<module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+_________________________ test_CheckPSUStatus[testbed] _________________________
+
+self = <ssh_login.Login object at 0x7f5cb6291a58>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>           self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+
+../Lib/ssh_login.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb6291b38>
+hostname = '192.168.1.7', port = 22, username = 'root', password = 'onl'
+pkey = None, key_filename = None, timeout = None, allow_agent = False
+look_for_keys = False, compress = False
+sock = <socket.socket fd=12, family=AddressFamily.AF_INET, type=2049, proto=0, laddr=('172.22.92.133', 35090), raddr=('192.168.1.7', 22)>
+gss_auth = False, gss_kex = False, gss_deleg_creds = True, gss_host = None
+banner_timeout = None, auth_timeout = None, gss_trust_dns = True
+passphrase = None, disabled_algorithms = None
+
+    def connect(
+        self,
+        hostname,
+        port=SSH_PORT,
+        username=None,
+        password=None,
+        pkey=None,
+        key_filename=None,
+        timeout=None,
+        allow_agent=True,
+        look_for_keys=True,
+        compress=False,
+        sock=None,
+        gss_auth=False,
+        gss_kex=False,
+        gss_deleg_creds=True,
+        gss_host=None,
+        banner_timeout=None,
+        auth_timeout=None,
+        gss_trust_dns=True,
+        passphrase=None,
+        disabled_algorithms=None,
+    ):
+        """
+        Connect to an SSH server and authenticate to it.  The server's host key
+        is checked against the system host keys (see `load_system_host_keys`)
+        and any local host keys (`load_host_keys`).  If the server's hostname
+        is not found in either set of host keys, the missing host key policy
+        is used (see `set_missing_host_key_policy`).  The default policy is
+        to reject the key and raise an `.SSHException`.
+    
+        Authentication is attempted in the following order of priority:
+    
+            - The ``pkey`` or ``key_filename`` passed in (if any)
+    
+              - ``key_filename`` may contain OpenSSH public certificate paths
+                as well as regular private-key paths; when files ending in
+                ``-cert.pub`` are found, they are assumed to match a private
+                key, and both components will be loaded. (The private key
+                itself does *not* need to be listed in ``key_filename`` for
+                this to occur - *just* the certificate.)
+    
+            - Any key we can find through an SSH agent
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in
+              ``~/.ssh/``
+    
+              - When OpenSSH-style public certificates exist that match an
+                existing such private key (so e.g. one has ``id_rsa`` and
+                ``id_rsa-cert.pub``) the certificate will be loaded alongside
+                the private key and used for authentication.
+    
+            - Plain username/password auth, if a password was given
+    
+        If a private key requires a password to unlock it, and a password is
+        passed in, that password will be used to attempt to unlock the key.
+    
+        :param str hostname: the server to connect to
+        :param int port: the server port to connect to
+        :param str username:
+            the username to authenticate as (defaults to the current local
+            username)
+        :param str password:
+            Used for password authentication; is also used for private key
+            decryption if ``passphrase`` is not given.
+        :param str passphrase:
+            Used for decrypting private keys.
+        :param .PKey pkey: an optional private key to use for authentication
+        :param str key_filename:
+            the filename, or list of filenames, of optional private key(s)
+            and/or certs to try for authentication
+        :param float timeout:
+            an optional timeout (in seconds) for the TCP connect
+        :param bool allow_agent:
+            set to False to disable connecting to the SSH agent
+        :param bool look_for_keys:
+            set to False to disable searching for discoverable private key
+            files in ``~/.ssh/``
+        :param bool compress: set to True to turn on compression
+        :param socket sock:
+            an open socket or socket-like object (such as a `.Channel`) to use
+            for communication to the target host
+        :param bool gss_auth:
+            ``True`` if you want to use GSS-API authentication
+        :param bool gss_kex:
+            Perform GSS-API Key Exchange and user authentication
+        :param bool gss_deleg_creds: Delegate GSS-API client credentials or not
+        :param str gss_host:
+            The targets name in the kerberos database. default: hostname
+        :param bool gss_trust_dns:
+            Indicates whether or not the DNS is trusted to securely
+            canonicalize the name of the host being connected to (default
+            ``True``).
+        :param float banner_timeout: an optional timeout (in seconds) to wait
+            for the SSH banner to be presented.
+        :param float auth_timeout: an optional timeout (in seconds) to wait for
+            an authentication response.
+        :param dict disabled_algorithms:
+            an optional dict passed directly to `.Transport` and its keyword
+            argument of the same name.
+    
+        :raises:
+            `.BadHostKeyException` -- if the server's host key could not be
+            verified
+        :raises: `.AuthenticationException` -- if authentication failed
+        :raises:
+            `.SSHException` -- if there was any other error connecting or
+            establishing an SSH session
+        :raises socket.error: if a socket error occurred while connecting
+    
+        .. versionchanged:: 1.15
+            Added the ``banner_timeout``, ``gss_auth``, ``gss_kex``,
+            ``gss_deleg_creds`` and ``gss_host`` arguments.
+        .. versionchanged:: 2.3
+            Added the ``gss_trust_dns`` argument.
+        .. versionchanged:: 2.4
+            Added the ``passphrase`` argument.
+        .. versionchanged:: 2.6
+            Added the ``disabled_algorithms`` argument.
+        """
+        if not sock:
+            errors = {}
+            # Try multiple possible address families (e.g. IPv4 vs IPv6)
+            to_try = list(self._families_and_addresses(hostname, port))
+            for af, addr in to_try:
+                try:
+                    sock = socket.socket(af, socket.SOCK_STREAM)
+                    if timeout is not None:
+                        try:
+                            sock.settimeout(timeout)
+                        except:
+                            pass
+                    retry_on_signal(lambda: sock.connect(addr))
+                    # Break out of the loop on success
+                    break
+                except socket.error as e:
+                    # Raise anything that isn't a straight up connection error
+                    # (such as a resolution error)
+                    if e.errno not in (ECONNREFUSED, EHOSTUNREACH):
+                        raise
+                    # Capture anything else so we know how the run looks once
+                    # iteration is complete. Retain info about which attempt
+                    # this was.
+                    errors[addr] = e
+    
+            # Make sure we explode usefully if no address family attempts
+            # succeeded. We've no way of knowing which error is the "right"
+            # one, so we construct a hybrid exception containing all the real
+            # ones, of a subclass that client code should still be watching for
+            # (socket.error)
+            if len(errors) == len(to_try):
+                raise NoValidConnectionsError(errors)
+    
+        t = self._transport = Transport(
+            sock,
+            gss_kex=gss_kex,
+            gss_deleg_creds=gss_deleg_creds,
+            disabled_algorithms=disabled_algorithms,
+        )
+        t.use_compression(compress=compress)
+        t.set_gss_host(
+            # t.hostname may be None, but GSS-API requires a target name.
+            # Therefore use hostname as fallback.
+            gss_host=gss_host or hostname,
+            trust_dns=gss_trust_dns,
+            gssapi_requested=gss_auth or gss_kex,
+        )
+        if self._log_channel is not None:
+            t.set_log_channel(self._log_channel)
+        if banner_timeout is not None:
+            t.banner_timeout = banner_timeout
+        if auth_timeout is not None:
+            t.auth_timeout = auth_timeout
+    
+        if port == SSH_PORT:
+            server_hostkey_name = hostname
+        else:
+            server_hostkey_name = "[{}]:{}".format(hostname, port)
+        our_server_keys = None
+    
+        our_server_keys = self._system_host_keys.get(server_hostkey_name)
+        if our_server_keys is None:
+            our_server_keys = self._host_keys.get(server_hostkey_name)
+        if our_server_keys is not None:
+            keytype = our_server_keys.keys()[0]
+            sec_opts = t.get_security_options()
+            other_types = [x for x in sec_opts.key_types if x != keytype]
+            sec_opts.key_types = [keytype] + other_types
+    
+        t.start_client(timeout=timeout)
+    
+        # If GSS-API Key Exchange is performed we are not required to check the
+        # host key, because the host is authenticated via GSS-API / SSPI as
+        # well as our client.
+        if not self._transport.gss_kex_used:
+            server_key = t.get_remote_server_key()
+            if our_server_keys is None:
+                # will raise exception if the key is rejected
+                self._policy.missing_host_key(
+                    self, server_hostkey_name, server_key
+                )
+            else:
+                our_key = our_server_keys.get(server_key.get_name())
+                if our_key != server_key:
+                    if our_key is None:
+                        our_key = list(our_server_keys.values())[0]
+                    raise BadHostKeyException(hostname, server_key, our_key)
+    
+        if username is None:
+            username = getpass.getuser()
+    
+        if key_filename is None:
+            key_filenames = []
+        elif isinstance(key_filename, string_types):
+            key_filenames = [key_filename]
+        else:
+            key_filenames = key_filename
+    
+        self._auth(
+            username,
+            password,
+            pkey,
+            key_filenames,
+            allow_agent,
+            look_for_keys,
+            gss_auth,
+            gss_kex,
+            gss_deleg_creds,
+            t.gss_host,
+>           passphrase,
+        )
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:446: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb6291b38>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+                self._transport.auth_password(username, password)
+                return
+            except SSHException as e:
+                saved_exception = e
+        elif two_factor:
+            try:
+                self._transport.auth_interactive_dumb(username)
+                return
+            except SSHException as e:
+                saved_exception = e
+    
+        # if we got an auth-failed exception earlier, re-raise it
+        if saved_exception is not None:
+>           raise saved_exception
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:766: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb6291b38>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+>               self._transport.auth_password(username, password)
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:753: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.Transport at 0xb6291ba8 (cipher aes128-ctr, 128 bits) (connected; awaiting auth)>
+username = 'root', password = 'onl', event = None, fallback = True
+
+    def auth_password(self, username, password, event=None, fallback=True):
+        """
+        Authenticate to the server using a password.  The username and password
+        are sent over an encrypted link.
+    
+        If an ``event`` is passed in, this method will return immediately, and
+        the event will be triggered once authentication succeeds or fails.  On
+        success, `is_authenticated` will return ``True``.  On failure, you may
+        use `get_exception` to get more detailed error information.
+    
+        Since 1.1, if no event is passed, this method will block until the
+        authentication succeeds or fails.  On failure, an exception is raised.
+        Otherwise, the method simply returns.
+    
+        Since 1.5, if no event is passed and ``fallback`` is ``True`` (the
+        default), if the server doesn't support plain password authentication
+        but does support so-called "keyboard-interactive" mode, an attempt
+        will be made to authenticate using this interactive mode.  If it fails,
+        the normal exception will be thrown as if the attempt had never been
+        made.  This is useful for some recent Gentoo and Debian distributions,
+        which turn off plain password authentication in a misguided belief
+        that interactive authentication is "more secure".  (It's not.)
+    
+        If the server requires multi-step authentication (which is very rare),
+        this method will return a list of auth types permissible for the next
+        step.  Otherwise, in the normal case, an empty list is returned.
+    
+        :param str username: the username to authenticate as
+        :param basestring password: the password to authenticate with
+        :param .threading.Event event:
+            an event to trigger when the authentication attempt is complete
+            (whether it was successful or not)
+        :param bool fallback:
+            ``True`` if an attempt at an automated "interactive" password auth
+            should be made if the server doesn't support normal password auth
+        :return:
+            list of auth types permissible for the next stage of
+            authentication (normally empty)
+    
+        :raises:
+            `.BadAuthenticationType` -- if password authentication isn't
+            allowed by the server for this user (and no event was passed in)
+        :raises:
+            `.AuthenticationException` -- if the authentication failed (and no
+            event was passed in)
+        :raises: `.SSHException` -- if there was a network error
+        """
+        if (not self.active) or (not self.initial_kex_done):
+            # we should never try to send the password unless we're on a secure
+            # link
+            raise SSHException("No existing session")
+        if event is None:
+            my_event = threading.Event()
+        else:
+            my_event = event
+        self.auth_handler = AuthHandler(self)
+        self.auth_handler.auth_password(username, password, my_event)
+        if event is not None:
+            # caller wants to wait for event themselves
+            return []
+        try:
+>           return self.auth_handler.wait_for_response(my_event)
+
+../../.local/lib/python3.6/site-packages/paramiko/transport.py:1564: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.auth_handler.AuthHandler object at 0x7f5cb630bb70>
+event = <threading.Event object at 0x7f5cb630b588>
+
+    def wait_for_response(self, event):
+        max_ts = None
+        if self.transport.auth_timeout is not None:
+            max_ts = time.time() + self.transport.auth_timeout
+        while True:
+            event.wait(0.1)
+            if not self.transport.is_active():
+                e = self.transport.get_exception()
+                if (e is None) or issubclass(e.__class__, EOFError):
+                    e = AuthenticationException("Authentication failed.")
+                raise e
+            if event.is_set():
+                break
+            if max_ts is not None and max_ts <= time.time():
+                raise AuthenticationException("Authentication timeout.")
+    
+        if not self.is_authenticated():
+            e = self.transport.get_exception()
+            if e is None:
+                e = AuthenticationException("Authentication failed.")
+            # this is horrible.  Python Exception isn't yet descended from
+            # object, so type(e) won't work. :(
+            if issubclass(e.__class__, PartialAuthentication):
+                return e.allowed_types
+>           raise e
+E           paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+../../.local/lib/python3.6/site-packages/paramiko/auth_handler.py:259: AuthenticationException
+
+During handling of the above exception, another exception occurred:
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUStatus(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Status')
+
+../Scripts/test_20.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../Lib/GetKeyValue.py:29: in Get_PSU_Value
+    DUT = Login(IPAddress, 'root', 'onl')
+../Lib/ssh_login.py:10: in __init__
+    self.__deviceConnect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ssh_login.Login object at 0x7f5cb6291a58>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+>       except AuthenticationException as err:
+E       NameError: name 'AuthenticationException' is not defined
+
+../Lib/ssh_login.py:18: NameError
+__________________________ test_CheckPSUType[testbed] __________________________
+
+self = <ssh_login.Login object at 0x7f5cb621d320>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>           self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+
+../Lib/ssh_login.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb621d5c0>
+hostname = '192.168.1.7', port = 22, username = 'root', password = 'onl'
+pkey = None, key_filename = None, timeout = None, allow_agent = False
+look_for_keys = False, compress = False
+sock = <socket.socket fd=13, family=AddressFamily.AF_INET, type=2049, proto=0, laddr=('172.22.92.133', 35092), raddr=('192.168.1.7', 22)>
+gss_auth = False, gss_kex = False, gss_deleg_creds = True, gss_host = None
+banner_timeout = None, auth_timeout = None, gss_trust_dns = True
+passphrase = None, disabled_algorithms = None
+
+    def connect(
+        self,
+        hostname,
+        port=SSH_PORT,
+        username=None,
+        password=None,
+        pkey=None,
+        key_filename=None,
+        timeout=None,
+        allow_agent=True,
+        look_for_keys=True,
+        compress=False,
+        sock=None,
+        gss_auth=False,
+        gss_kex=False,
+        gss_deleg_creds=True,
+        gss_host=None,
+        banner_timeout=None,
+        auth_timeout=None,
+        gss_trust_dns=True,
+        passphrase=None,
+        disabled_algorithms=None,
+    ):
+        """
+        Connect to an SSH server and authenticate to it.  The server's host key
+        is checked against the system host keys (see `load_system_host_keys`)
+        and any local host keys (`load_host_keys`).  If the server's hostname
+        is not found in either set of host keys, the missing host key policy
+        is used (see `set_missing_host_key_policy`).  The default policy is
+        to reject the key and raise an `.SSHException`.
+    
+        Authentication is attempted in the following order of priority:
+    
+            - The ``pkey`` or ``key_filename`` passed in (if any)
+    
+              - ``key_filename`` may contain OpenSSH public certificate paths
+                as well as regular private-key paths; when files ending in
+                ``-cert.pub`` are found, they are assumed to match a private
+                key, and both components will be loaded. (The private key
+                itself does *not* need to be listed in ``key_filename`` for
+                this to occur - *just* the certificate.)
+    
+            - Any key we can find through an SSH agent
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in
+              ``~/.ssh/``
+    
+              - When OpenSSH-style public certificates exist that match an
+                existing such private key (so e.g. one has ``id_rsa`` and
+                ``id_rsa-cert.pub``) the certificate will be loaded alongside
+                the private key and used for authentication.
+    
+            - Plain username/password auth, if a password was given
+    
+        If a private key requires a password to unlock it, and a password is
+        passed in, that password will be used to attempt to unlock the key.
+    
+        :param str hostname: the server to connect to
+        :param int port: the server port to connect to
+        :param str username:
+            the username to authenticate as (defaults to the current local
+            username)
+        :param str password:
+            Used for password authentication; is also used for private key
+            decryption if ``passphrase`` is not given.
+        :param str passphrase:
+            Used for decrypting private keys.
+        :param .PKey pkey: an optional private key to use for authentication
+        :param str key_filename:
+            the filename, or list of filenames, of optional private key(s)
+            and/or certs to try for authentication
+        :param float timeout:
+            an optional timeout (in seconds) for the TCP connect
+        :param bool allow_agent:
+            set to False to disable connecting to the SSH agent
+        :param bool look_for_keys:
+            set to False to disable searching for discoverable private key
+            files in ``~/.ssh/``
+        :param bool compress: set to True to turn on compression
+        :param socket sock:
+            an open socket or socket-like object (such as a `.Channel`) to use
+            for communication to the target host
+        :param bool gss_auth:
+            ``True`` if you want to use GSS-API authentication
+        :param bool gss_kex:
+            Perform GSS-API Key Exchange and user authentication
+        :param bool gss_deleg_creds: Delegate GSS-API client credentials or not
+        :param str gss_host:
+            The targets name in the kerberos database. default: hostname
+        :param bool gss_trust_dns:
+            Indicates whether or not the DNS is trusted to securely
+            canonicalize the name of the host being connected to (default
+            ``True``).
+        :param float banner_timeout: an optional timeout (in seconds) to wait
+            for the SSH banner to be presented.
+        :param float auth_timeout: an optional timeout (in seconds) to wait for
+            an authentication response.
+        :param dict disabled_algorithms:
+            an optional dict passed directly to `.Transport` and its keyword
+            argument of the same name.
+    
+        :raises:
+            `.BadHostKeyException` -- if the server's host key could not be
+            verified
+        :raises: `.AuthenticationException` -- if authentication failed
+        :raises:
+            `.SSHException` -- if there was any other error connecting or
+            establishing an SSH session
+        :raises socket.error: if a socket error occurred while connecting
+    
+        .. versionchanged:: 1.15
+            Added the ``banner_timeout``, ``gss_auth``, ``gss_kex``,
+            ``gss_deleg_creds`` and ``gss_host`` arguments.
+        .. versionchanged:: 2.3
+            Added the ``gss_trust_dns`` argument.
+        .. versionchanged:: 2.4
+            Added the ``passphrase`` argument.
+        .. versionchanged:: 2.6
+            Added the ``disabled_algorithms`` argument.
+        """
+        if not sock:
+            errors = {}
+            # Try multiple possible address families (e.g. IPv4 vs IPv6)
+            to_try = list(self._families_and_addresses(hostname, port))
+            for af, addr in to_try:
+                try:
+                    sock = socket.socket(af, socket.SOCK_STREAM)
+                    if timeout is not None:
+                        try:
+                            sock.settimeout(timeout)
+                        except:
+                            pass
+                    retry_on_signal(lambda: sock.connect(addr))
+                    # Break out of the loop on success
+                    break
+                except socket.error as e:
+                    # Raise anything that isn't a straight up connection error
+                    # (such as a resolution error)
+                    if e.errno not in (ECONNREFUSED, EHOSTUNREACH):
+                        raise
+                    # Capture anything else so we know how the run looks once
+                    # iteration is complete. Retain info about which attempt
+                    # this was.
+                    errors[addr] = e
+    
+            # Make sure we explode usefully if no address family attempts
+            # succeeded. We've no way of knowing which error is the "right"
+            # one, so we construct a hybrid exception containing all the real
+            # ones, of a subclass that client code should still be watching for
+            # (socket.error)
+            if len(errors) == len(to_try):
+                raise NoValidConnectionsError(errors)
+    
+        t = self._transport = Transport(
+            sock,
+            gss_kex=gss_kex,
+            gss_deleg_creds=gss_deleg_creds,
+            disabled_algorithms=disabled_algorithms,
+        )
+        t.use_compression(compress=compress)
+        t.set_gss_host(
+            # t.hostname may be None, but GSS-API requires a target name.
+            # Therefore use hostname as fallback.
+            gss_host=gss_host or hostname,
+            trust_dns=gss_trust_dns,
+            gssapi_requested=gss_auth or gss_kex,
+        )
+        if self._log_channel is not None:
+            t.set_log_channel(self._log_channel)
+        if banner_timeout is not None:
+            t.banner_timeout = banner_timeout
+        if auth_timeout is not None:
+            t.auth_timeout = auth_timeout
+    
+        if port == SSH_PORT:
+            server_hostkey_name = hostname
+        else:
+            server_hostkey_name = "[{}]:{}".format(hostname, port)
+        our_server_keys = None
+    
+        our_server_keys = self._system_host_keys.get(server_hostkey_name)
+        if our_server_keys is None:
+            our_server_keys = self._host_keys.get(server_hostkey_name)
+        if our_server_keys is not None:
+            keytype = our_server_keys.keys()[0]
+            sec_opts = t.get_security_options()
+            other_types = [x for x in sec_opts.key_types if x != keytype]
+            sec_opts.key_types = [keytype] + other_types
+    
+        t.start_client(timeout=timeout)
+    
+        # If GSS-API Key Exchange is performed we are not required to check the
+        # host key, because the host is authenticated via GSS-API / SSPI as
+        # well as our client.
+        if not self._transport.gss_kex_used:
+            server_key = t.get_remote_server_key()
+            if our_server_keys is None:
+                # will raise exception if the key is rejected
+                self._policy.missing_host_key(
+                    self, server_hostkey_name, server_key
+                )
+            else:
+                our_key = our_server_keys.get(server_key.get_name())
+                if our_key != server_key:
+                    if our_key is None:
+                        our_key = list(our_server_keys.values())[0]
+                    raise BadHostKeyException(hostname, server_key, our_key)
+    
+        if username is None:
+            username = getpass.getuser()
+    
+        if key_filename is None:
+            key_filenames = []
+        elif isinstance(key_filename, string_types):
+            key_filenames = [key_filename]
+        else:
+            key_filenames = key_filename
+    
+        self._auth(
+            username,
+            password,
+            pkey,
+            key_filenames,
+            allow_agent,
+            look_for_keys,
+            gss_auth,
+            gss_kex,
+            gss_deleg_creds,
+            t.gss_host,
+>           passphrase,
+        )
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:446: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb621d5c0>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+                self._transport.auth_password(username, password)
+                return
+            except SSHException as e:
+                saved_exception = e
+        elif two_factor:
+            try:
+                self._transport.auth_interactive_dumb(username)
+                return
+            except SSHException as e:
+                saved_exception = e
+    
+        # if we got an auth-failed exception earlier, re-raise it
+        if saved_exception is not None:
+>           raise saved_exception
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:766: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.client.SSHClient object at 0x7f5cb621d5c0>, username = 'root'
+password = 'onl', pkey = None, key_filenames = [], allow_agent = False
+look_for_keys = False, gss_auth = False, gss_kex = False, gss_deleg_creds = True
+gss_host = None, passphrase = 'onl'
+
+    def _auth(
+        self,
+        username,
+        password,
+        pkey,
+        key_filenames,
+        allow_agent,
+        look_for_keys,
+        gss_auth,
+        gss_kex,
+        gss_deleg_creds,
+        gss_host,
+        passphrase,
+    ):
+        """
+        Try, in order:
+    
+            - The key(s) passed in, if one was passed in.
+            - Any key we can find through an SSH agent (if allowed).
+            - Any "id_rsa", "id_dsa" or "id_ecdsa" key discoverable in ~/.ssh/
+              (if allowed).
+            - Plain username/password auth, if a password was given.
+    
+        (The password might be needed to unlock a private key [if 'passphrase'
+        isn't also given], or for two-factor authentication [for which it is
+        required].)
+        """
+        saved_exception = None
+        two_factor = False
+        allowed_types = set()
+        two_factor_types = {"keyboard-interactive", "password"}
+        if passphrase is None and password is not None:
+            passphrase = password
+    
+        # If GSS-API support and GSS-PI Key Exchange was performed, we attempt
+        # authentication with gssapi-keyex.
+        if gss_kex and self._transport.gss_kex_used:
+            try:
+                self._transport.auth_gssapi_keyex(username)
+                return
+            except Exception as e:
+                saved_exception = e
+    
+        # Try GSS-API authentication (gssapi-with-mic) only if GSS-API Key
+        # Exchange is not performed, because if we use GSS-API for the key
+        # exchange, there is already a fully established GSS-API context, so
+        # why should we do that again?
+        if gss_auth:
+            try:
+                return self._transport.auth_gssapi_with_mic(
+                    username, gss_host, gss_deleg_creds
+                )
+            except Exception as e:
+                saved_exception = e
+    
+        if pkey is not None:
+            try:
+                self._log(
+                    DEBUG,
+                    "Trying SSH key {}".format(
+                        hexlify(pkey.get_fingerprint())
+                    ),
+                )
+                allowed_types = set(
+                    self._transport.auth_publickey(username, pkey)
+                )
+                two_factor = allowed_types & two_factor_types
+                if not two_factor:
+                    return
+            except SSHException as e:
+                saved_exception = e
+    
+        if not two_factor:
+            for key_filename in key_filenames:
+                for pkey_class in (RSAKey, DSSKey, ECDSAKey, Ed25519Key):
+                    try:
+                        key = self._key_from_filepath(
+                            key_filename, pkey_class, passphrase
+                        )
+                        allowed_types = set(
+                            self._transport.auth_publickey(username, key)
+                        )
+                        two_factor = allowed_types & two_factor_types
+                        if not two_factor:
+                            return
+                        break
+                    except SSHException as e:
+                        saved_exception = e
+    
+        if not two_factor and allow_agent:
+            if self._agent is None:
+                self._agent = Agent()
+    
+            for key in self._agent.get_keys():
+                try:
+                    id_ = hexlify(key.get_fingerprint())
+                    self._log(DEBUG, "Trying SSH agent key {}".format(id_))
+                    # for 2-factor auth a successfully auth'd key password
+                    # will return an allowed 2fac auth method
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except SSHException as e:
+                    saved_exception = e
+    
+        if not two_factor:
+            keyfiles = []
+    
+            for keytype, name in [
+                (RSAKey, "rsa"),
+                (DSSKey, "dsa"),
+                (ECDSAKey, "ecdsa"),
+                (Ed25519Key, "ed25519"),
+            ]:
+                # ~/ssh/ is for windows
+                for directory in [".ssh", "ssh"]:
+                    full_path = os.path.expanduser(
+                        "~/{}/id_{}".format(directory, name)
+                    )
+                    if os.path.isfile(full_path):
+                        # TODO: only do this append if below did not run
+                        keyfiles.append((keytype, full_path))
+                        if os.path.isfile(full_path + "-cert.pub"):
+                            keyfiles.append((keytype, full_path + "-cert.pub"))
+    
+            if not look_for_keys:
+                keyfiles = []
+    
+            for pkey_class, filename in keyfiles:
+                try:
+                    key = self._key_from_filepath(
+                        filename, pkey_class, passphrase
+                    )
+                    # for 2-factor auth a successfully auth'd key will result
+                    # in ['password']
+                    allowed_types = set(
+                        self._transport.auth_publickey(username, key)
+                    )
+                    two_factor = allowed_types & two_factor_types
+                    if not two_factor:
+                        return
+                    break
+                except (SSHException, IOError) as e:
+                    saved_exception = e
+    
+        if password is not None:
+            try:
+>               self._transport.auth_password(username, password)
+
+../../.local/lib/python3.6/site-packages/paramiko/client.py:753: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.Transport at 0xb621d6d8 (cipher aes128-ctr, 128 bits) (connected; awaiting auth)>
+username = 'root', password = 'onl', event = None, fallback = True
+
+    def auth_password(self, username, password, event=None, fallback=True):
+        """
+        Authenticate to the server using a password.  The username and password
+        are sent over an encrypted link.
+    
+        If an ``event`` is passed in, this method will return immediately, and
+        the event will be triggered once authentication succeeds or fails.  On
+        success, `is_authenticated` will return ``True``.  On failure, you may
+        use `get_exception` to get more detailed error information.
+    
+        Since 1.1, if no event is passed, this method will block until the
+        authentication succeeds or fails.  On failure, an exception is raised.
+        Otherwise, the method simply returns.
+    
+        Since 1.5, if no event is passed and ``fallback`` is ``True`` (the
+        default), if the server doesn't support plain password authentication
+        but does support so-called "keyboard-interactive" mode, an attempt
+        will be made to authenticate using this interactive mode.  If it fails,
+        the normal exception will be thrown as if the attempt had never been
+        made.  This is useful for some recent Gentoo and Debian distributions,
+        which turn off plain password authentication in a misguided belief
+        that interactive authentication is "more secure".  (It's not.)
+    
+        If the server requires multi-step authentication (which is very rare),
+        this method will return a list of auth types permissible for the next
+        step.  Otherwise, in the normal case, an empty list is returned.
+    
+        :param str username: the username to authenticate as
+        :param basestring password: the password to authenticate with
+        :param .threading.Event event:
+            an event to trigger when the authentication attempt is complete
+            (whether it was successful or not)
+        :param bool fallback:
+            ``True`` if an attempt at an automated "interactive" password auth
+            should be made if the server doesn't support normal password auth
+        :return:
+            list of auth types permissible for the next stage of
+            authentication (normally empty)
+    
+        :raises:
+            `.BadAuthenticationType` -- if password authentication isn't
+            allowed by the server for this user (and no event was passed in)
+        :raises:
+            `.AuthenticationException` -- if the authentication failed (and no
+            event was passed in)
+        :raises: `.SSHException` -- if there was a network error
+        """
+        if (not self.active) or (not self.initial_kex_done):
+            # we should never try to send the password unless we're on a secure
+            # link
+            raise SSHException("No existing session")
+        if event is None:
+            my_event = threading.Event()
+        else:
+            my_event = event
+        self.auth_handler = AuthHandler(self)
+        self.auth_handler.auth_password(username, password, my_event)
+        if event is not None:
+            # caller wants to wait for event themselves
+            return []
+        try:
+>           return self.auth_handler.wait_for_response(my_event)
+
+../../.local/lib/python3.6/site-packages/paramiko/transport.py:1564: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paramiko.auth_handler.AuthHandler object at 0x7f5cb73ae8d0>
+event = <threading.Event object at 0x7f5cb73aef98>
+
+    def wait_for_response(self, event):
+        max_ts = None
+        if self.transport.auth_timeout is not None:
+            max_ts = time.time() + self.transport.auth_timeout
+        while True:
+            event.wait(0.1)
+            if not self.transport.is_active():
+                e = self.transport.get_exception()
+                if (e is None) or issubclass(e.__class__, EOFError):
+                    e = AuthenticationException("Authentication failed.")
+                raise e
+            if event.is_set():
+                break
+            if max_ts is not None and max_ts <= time.time():
+                raise AuthenticationException("Authentication timeout.")
+    
+        if not self.is_authenticated():
+            e = self.transport.get_exception()
+            if e is None:
+                e = AuthenticationException("Authentication failed.")
+            # this is horrible.  Python Exception isn't yet descended from
+            # object, so type(e) won't work. :(
+            if issubclass(e.__class__, PartialAuthentication):
+                return e.allowed_types
+>           raise e
+E           paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+../../.local/lib/python3.6/site-packages/paramiko/auth_handler.py:259: AuthenticationException
+
+During handling of the above exception, another exception occurred:
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUType(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Type')
+
+../Scripts/test_22.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../Lib/GetKeyValue.py:29: in Get_PSU_Value
+    DUT = Login(IPAddress, 'root', 'onl')
+../Lib/ssh_login.py:10: in __init__
+    self.__deviceConnect()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <ssh_login.Login object at 0x7f5cb621d320>
+
+    def __deviceConnect(self):
+        try:
+            self.client = paramiko.SSHClient()
+            self.client.load_system_host_keys()
+            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            self.client.connect(hostname=self.ipaddress, username=self.username, password=self.password, look_for_keys=False, allow_agent=False)
+>       except AuthenticationException as err:
+E       NameError: name 'AuthenticationException' is not defined
+
+../Lib/ssh_login.py:18: NameError
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated html file: file:///home/alexander/ONLP_Automation/main/Results/496378/ONL_testbed.yml_07_31_2022_14:07:25.html -
+=========================== short test summary info ============================
+FAILED ../Scripts/test_19.py::test_CheckPSUState[testbed] - NameError: name '...
+FAILED ../Scripts/test_20.py::test_CheckPSUStatus[testbed] - NameError: name ...
+FAILED ../Scripts/test_22.py::test_CheckPSUType[testbed] - NameError: name 'A...
+========================= 3 failed, 1 warning in 7.61s =========================
+[1;33m======================== TESTCASE EXECUTION END  =====================================
+Copying log and results to the FTP server
+[1mNcFTP 3.2.5[0m (Feb 02, 2011) by Mike Gleason (http://www.NcFTP.com/contact/).
+Resolving 192.168.1.7...                                                        Connecting to 192.168.1.7...                                                    
+(vsFTPd 3.0.3)
+Logging in...                                                                   
+Login successful.
+Logging in...                                                                   Logged in to 192.168.1.7.                                                       
+Current remote directory is /.
+Directory successfully changed.
+
