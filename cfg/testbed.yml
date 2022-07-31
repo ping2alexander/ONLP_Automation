@@ -6,8 +6,8 @@ HardwareList:
                         ip: 192.168.1.7, 
                         port: 22}
                 credentials: {
-                        username: alexander, 
-                        password: Dafne@140820 
+                        username: root, 
+                        password: onl
                         }
         DUT2:
                 Hardware_type: Questone
@@ -17,8 +17,8 @@ HardwareList:
                         port: 22
                         }
                 credentials: {
-                        username: alexander, 
-                        password: Dafne@140820 
+                        username: root, 
+                        password: onl 
                         }
 Connection:
         DUT1:

@@ -91,6 +91,7 @@ SCRIPT_PATH=`echo $SCRIPT_PATH | awk '{ print substr( $0, 2 ) }'`
 TESTBED_PATH=`echo $TESTBED_PATH | awk '{ print substr( $0, 2 ) }'`
 TMPFILEPATH=`echo $TMPFILEPATH | awk '{ print substr( $0, 2 ) }'`
 PYTHONPATH=`echo $PYTHONPATH | awk '{ print substr( $0, 2 ) }'`
+MAINPATH=`echo $FULL_PATH | awk '{ print substr( $0, 2 ) }'`
 Reportdir='Reports'
 Resultdir='Results'
 #export LIB_Folder=$PYTHONPATH
@@ -131,7 +132,16 @@ done
 f=$(echo $TESTBED | tr ".yml" "\n")
 TEMPFILE=${f[0]}
 
-exec 1> >(tee -a "./log/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").txt")
+subdir=$(shuf -i 100000-1000000 -n 1)
+echo $subdir
+
+echo "Creating sub directory under Report and Result directory"
+
+mkdir ${PARENTPATH}/Results/${subdir}
+mkdir ${PARENTPATH}/Reports/${subdir}
+mkdir ${PARENTPATH}/log/${subdir}
+
+exec 1> >(tee -a "./log/${subdir}/ONL_${TEMPFILE}_$(date +"%m_%d_%Y_%T").txt")
 
 echo ""
 
@@ -197,6 +207,20 @@ echo -e "\e[1;34m***************************************************************
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
 
+subdir=$(shuf -i 100000-1000000 -n 1)
+echo $subdir
+
+echo "Creating sub directory under Report and Result directory"
+
+if [ ! -d "$subdir" ]
+then
+        echo "Directory doesn't exist. Creating now"
+        mkdir ${PARENTPATH}/${Resultdir}/${subdir}
+        echo "Directory created successfully !!!"
+else
+        echo "Directory already exist"
+fi
+
 #Testcase execution start
 
 echo -e "\e[1;33m------------------------------------------------------------------------------------------"
@@ -221,14 +245,32 @@ if [[ ! -z ${SCRIPT} ]]; then
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir} --html=${PARENTPATH}/${Resultdir}/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").html
+	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").html
 fi
 
 echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ====================================="
 
 #Testcase exection end
 
+echo "Copying log and results to the FTP server"
 
+HOST='192.168.1.7'
+USER='admin'
+PASSWD='admin'
+Remotelocation='/'
+
+ncftp ftp://${USER}:${PASSWD}@${HOST}/<<EOF
+mkdir ${subdir}
+chmod 777 ${subdir}
+cd ${subdir}
+mkdir log
+mkdir Results
+chmod 777 log
+chmod 777 Results
+EOF
+
+ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/log ./log/${subdir}/*
+ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/Results ./Results/${subdir}/*
 
 #Cleanup
 
