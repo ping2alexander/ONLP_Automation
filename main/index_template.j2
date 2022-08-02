@@ -8,13 +8,16 @@ p    {color: red;}
 </style>
 </head>
 <body>
-<img src="./onl.jpeg" alt="Simply Easy Learning" width="200" height="80">
+<img src="./onl.jpeg" alt="Simply Easy Learning" width="80" height="80">
 <h1>ONL Regression</h1>
 <hr size="3" noshade>
-<table id="ONL" width="30%" cellspacing="0">
+<table id="ONL" width="80%" cellspacing="0">
 <thead>
-<th width="50">Date/Time</th>
+<th width="100">Date</th>
+<th width="50">Time</th>
+<th width="50">Platform</th>
 <th width="100">Regression Id</th>
+<th width="50">Status</th>
 </thead>
 <tbody>
 <style type="text/css">
@@ -27,8 +30,11 @@ background: #e8e7e1;
 </style>
 {% for row in Index.Entries %}
 <tr>
-	<td>{{row.Date_Time}}</td>
-	<td><a href="ftp://192.168.1.7/pub/"{{row.RegId}}>{{row.RegId}}</a></td>
+	<td>{{row.Date}}</td>
+	<td>{{row.Time}}</td>
+	<td>{{row.Platform}}</td>
+	<td><a href={{row.Page}}>{{row.RegId}}</a></td>
+	<td>Completed</td>
 </tr>
 {% endfor %}
 </tbody>
