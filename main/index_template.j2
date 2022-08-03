@@ -6,15 +6,26 @@ body {background-color: LightYellow;}
 h1   {color: blue;}
 p    {color: red;}
 </style>
+<link rel="stylesheet" href="jquery.dataTables.min.css">
+        <script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+                $(document).ready(function(){
+                        $("#mytable").DataTable();
+                });
+        </script>
 </head>
 <body>
-<img src="./onl.jpeg" alt="Simply Easy Learning" width="200" height="80">
+<img src="./onl.jpeg" alt="Simply Easy Learning" width="80" height="80">
 <h1>ONL Regression</h1>
 <hr size="3" noshade>
-<table id="ONL" width="30%" cellspacing="0">
+<table id="mytable" width="80%" cellspacing="0">
 <thead>
-<th width="50">Date/Time</th>
-<th width="100">Regression Id</th>
+<th width="100" style="background-color:#00FF00">DATE</th>
+<th width="50" style="background-color:#00FF00">TIME</th>
+<th width="50" style="background-color:#00FF00">PLATFORM</th>
+<th width="100" style="background-color:#00FF00">REGRESSION ID</th>
+<th width="50" style="background-color:#00FF00">STATUS</th>
 </thead>
 <tbody>
 <style type="text/css">
@@ -23,12 +34,16 @@ text-align: center;
 }
 tbody tr:nth-child(even) {
 background: #e8e7e1;
+text-align: center;
 }
 </style>
 {% for row in Index.Entries %}
 <tr>
-	<td>{{row.Date_Time}}</td>
-	<td><a href="ftp://192.168.1.7/pub/"{{row.RegId}}>{{row.RegId}}</a></td>
+	<td>{{row.Date}}</td>
+	<td>{{row.Time}}</td>
+	<td>{{row.Platform}}</td>
+	<td><a href={{row.Page}}>{{row.RegId}}</a></td>
+	<td>Completed</td>
 </tr>
 {% endfor %}
 </tbody>

@@ -131,17 +131,26 @@ done
 
 f=$(echo $TESTBED | tr ".yml" "\n")
 TEMPFILE=${f[0]}
+Log='log'
 
 subdir=$(shuf -i 100000-1000000 -n 1)
 echo $subdir
 
 echo "Creating sub directory under Report and Result directory"
 
-mkdir ${PARENTPATH}/Results/${subdir}
-mkdir ${PARENTPATH}/Reports/${subdir}
-mkdir ${PARENTPATH}/log/${subdir}
+echo "Creating sub directory under Report and Result directory"
 
-exec 1> >(tee -a "./log/${subdir}/ONL_${TEMPFILE}_$(date +"%m_%d_%Y_%T").txt")
+if [ ! -d "$subdir" ]
+then
+        echo "Directory doesn't exist. Creating now"
+        mkdir ${PARENTPATH}/${Resultdir}/${subdir}
+	mkdir ${PARENTPATH}/${Log}/${subdir}
+        echo "Directory created successfully !!!"
+else
+        echo "Directory already exist"
+fi
+
+exec 1> >(tee -a "./log/${subdir}/log.txt")
 
 echo ""
 
@@ -207,19 +216,6 @@ echo -e "\e[1;34m***************************************************************
 
 pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
 
-subdir=$(shuf -i 100000-1000000 -n 1)
-echo $subdir
-
-echo "Creating sub directory under Report and Result directory"
-
-if [ ! -d "$subdir" ]
-then
-        echo "Directory doesn't exist. Creating now"
-        mkdir ${PARENTPATH}/${Resultdir}/${subdir}
-        echo "Directory created successfully !!!"
-else
-        echo "Directory already exist"
-fi
 
 #Testcase execution start
 
@@ -245,21 +241,21 @@ if [[ ! -z ${SCRIPT} ]]; then
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/ONL_${TESTBED}_$(date +"%m_%d_%Y_%T").html
+	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/Result.html
 fi
 
 echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ====================================="
 
 #Testcase exection end
 
-echo "Copying log and results to the FTP server"
+echo "Copying log and results to the FTP server" > /dev/null
 
-HOST='192.168.1.7'
+HOST='172.22.92.133'
 USER='admin'
 PASSWD='admin'
 Remotelocation='/'
 
-ncftp ftp://${USER}:${PASSWD}@${HOST}/<<EOF
+ncftp ftp://${USER}:${PASSWD}@${HOST}/<<EOF  > /dev/null
 mkdir ${subdir}
 chmod 777 ${subdir}
 cd ${subdir}
@@ -269,10 +265,29 @@ chmod 777 log
 chmod 777 Results
 EOF
 
-ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/log ./log/${subdir}/*
-ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/Results ./Results/${subdir}/*
+ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/log ./log/${subdir}/* > /dev/null 2>&1
+ncftpput -u $USER -p $PASSWD -R $HOST /${subdir}/Results ./Results/${subdir}/* > /dev/null 2>&1
 
+#Update index_var file with new regId 
+python3 Index_add_new_element.py ${subdir} ${FILENAME} ${HOST} > /dev/null
+
+# Update ONL web home page 
+ansible-playbook index_task.yml > /dev/null
+
+#python3 RegId_add_new_element.py ${subdir} ${FILENAME} > /dev/null
+
+# Update ONL web home page 
+#ansible-playbook RegId_task.yml > /dev/null
+
+#mv regId.html ${subdir}.html > /dev/null
+
+sudo cp -r ./Results/${subdir} /var/www/html/ > /dev/null
+sudo cp -r ./log/${subdir} /var/www/html/ > /dev/null
+#sudo cp -r ./${subdir}.html /var/www/html/ > /dev/null
+sudo cp -r ./index.html /var/www/html/ > /dev/null
 #Cleanup
 
-rm a.yml
-rm test.yml
+rm a.yml > /dev/null
+rm test.yml > /dev/null
+rm index.html > /dev/null
+#rm ${subdir}.html > /dev/null
