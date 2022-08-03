@@ -13,6 +13,7 @@ sys.path.insert(0, libpath)
 from ssh_login import Login
 from DeviceInfo import *
 from GetKeyValue import *
+from KeyMatch import *
 
 @pytest.fixture
 def test_importlib(filename):
@@ -30,5 +31,7 @@ def test_CheckPSUStatus(test_importlib):
     DUTInfo = test_importlib
     val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Status')
 
-    assert val == 'Running'
+    result = KeyValueMatch(val, 'Running', 'Match')
+
+    print(result)
 

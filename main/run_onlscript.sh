@@ -274,20 +274,20 @@ python3 Index_add_new_element.py ${subdir} ${FILENAME} ${HOST} > /dev/null
 # Update ONL web home page 
 ansible-playbook index_task.yml > /dev/null
 
-python3 RegId_add_new_element.py ${subdir} ${FILENAME} > /dev/null
+#python3 RegId_add_new_element.py ${subdir} ${FILENAME} > /dev/null
 
 # Update ONL web home page 
-ansible-playbook RegId_task.yml > /dev/null
+#ansible-playbook RegId_task.yml > /dev/null
 
-mv regId.html ${subdir}.html > /dev/null
+#mv regId.html ${subdir}.html > /dev/null
 
 sudo cp -r ./Results/${subdir} /var/www/html/ > /dev/null
 sudo cp -r ./log/${subdir} /var/www/html/ > /dev/null
-sudo cp -r ./${subdir}.html /var/www/html/ > /dev/null
+#sudo cp -r ./${subdir}.html /var/www/html/ > /dev/null
 sudo cp -r ./index.html /var/www/html/ > /dev/null
 #Cleanup
 
 rm a.yml > /dev/null
 rm test.yml > /dev/null
 rm index.html > /dev/null
-rm ${subdir}.html > /dev/null
+#rm ${subdir}.html > /dev/null
