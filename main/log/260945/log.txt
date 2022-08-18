@@ -1,0 +1,198 @@
+
+ ---------------------------------------------------------------------------------------------------- 
+|                                                                                                    |
+|                     ONL(Open Network Linux) Automation                                             |
+|                                                                                                    |
+ ---------------------------------------------------------------------------------------------------- 
+*****************************************************************************************
+Step:1 - Validating the commandline arguments passed to the main shell script
+*****************************************************************************************
+[1;32mTestcase groupname(pytest marker) is not given as a input argument. Choosing default argument "All"
+[1;37m
+[1;34mCommandline arguments and environment variable declared
+[1;34m*******************************************************
+[1;34m|	Testbed Filename       : testbed.yml
+[1;34m|	Temp Filename          : testbed
+[1;34m|	Testcase groupname     : All
+[1;34m|	Script location        : /home/alexander/ONLP_Automation/Scripts
+[1;34m|	Testbed file location  : /home/alexander/ONLP_Automation/cfg
+[1;34m|	Library file location  : /home/alexander/ONLP_Automation/Lib
+[1;37m
+*****************************************************************************************
+Step:2 - Check testbed file existence
+*****************************************************************************************
+Check if testbed file is present in the specific location
+Tesbed file location: /home/alexander/ONLP_Automation/cfg
+Testbed filename: testbed.yml
+[1;32mSuccess: Testbed file is present in the configuration directory !!!
+[1;37m
+[1;36m******************************************************************************************
+[1;36mStep:3 Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
+[1;36m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-124-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 4 items
+
+test_testbed_file_parser.py::test_parse_testbed_file[testbed.yml] PASSED
+test_testbed_file_parser.py::test_CheckKeyExist[testbed.yml] PASSED
+test_testbed_file_parser.py::test_createTmpFile[testbed-testbed.yml] PASSED
+test_testbed_file_parser.py::test_Populate_TmpFile[testbed.yml] 
+
+FAILED
+
+=================================== FAILURES ===================================
+______________________ test_Populate_TmpFile[testbed.yml] ______________________
+
+test_convert_yml_to_dict = {'Devices': {'DUT1': {'Hardware_type': 'Questone', 'access': {'ip': '192.168.1.7', 'port': 22, 'protocol': 'ssh'}, 'cr... 'DUT1', 'RemotePort': 'Ethernet1'}, {'LocalPort': 'Ethernet12', 'RemoteDevice': 'DUT1', 'RemotePort': 'Ethernet2'}]}}}
+
+    def test_Populate_TmpFile(test_convert_yml_to_dict):
+        global new_filename
+        temp = test_convert_yml_to_dict
+        #print(temp)
+        temp1 = './../tmp/'
+        new_filename = temp1 + new_filename
+        print('\n')
+        with open(new_filename, 'w+') as f:
+>           DUT1_HwType = str(temp['HardwareList']['DUT1']['Hardware_type'])
+E           KeyError: 'HardwareList'
+
+test_testbed_file_parser.py:89: KeyError
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_testbed_file_parser.py::test_Populate_TmpFile[testbed.yml] - KeyE...
+==================== 1 failed, 3 passed, 1 warning in 0.12s ====================
+[1;35m******************************************************************************************
+[1;35mStep: 5                   Topology Diagram                              
+[1;35m******************************************************************************************
+[1;37m
+[1;34m******************************************************************************************
+[1;34mStep: 5                   DUTs PING test                              
+[1;34m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-124-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/main
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 2 items
+
+test_collectSystemData.py::test_reachability[testbed] FAILED
+test_collectSystemData.py::test_collect_sysinfo[testbed] FAILED
+
+=================================== FAILURES ===================================
+__________________________ test_reachability[testbed] __________________________
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    def test_reachability(test_importlib):
+        dut1_test = 1
+        dut2_test = 1
+        DUTInfo = test_importlib
+        try:
+>           DUTInfo.DUT1_IP
+E           AttributeError: module 'testbed' has no attribute 'DUT1_IP'
+
+test_collectSystemData.py:54: AttributeError
+________________________ test_collect_sysinfo[testbed] _________________________
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    def test_collect_sysinfo(test_importlib):
+        DUTInfo = test_importlib
+        try:
+>           DUTInfo.DUT1_IP
+E           AttributeError: module 'testbed' has no attribute 'DUT1_IP'
+
+test_collectSystemData.py:100: AttributeError
+=============================== warnings summary ===============================
+test_collectSystemData.py:5
+  /home/alexander/ONLP_Automation/main/test_collectSystemData.py:5: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_collectSystemData.py::test_reachability[testbed] - AttributeError...
+FAILED test_collectSystemData.py::test_collect_sysinfo[testbed] - AttributeEr...
+========================= 2 failed, 1 warning in 0.12s =========================
+[1;33m------------------------------------------------------------------------------------------
+[1;33m                                                                                          |
+[1;33m                                   TESTCASE EXECUTION START                               |
+[1;33m                                                                                          |
+[1;33m------------------------------------------------------------------------------------------
+[1;37m
+============================= test session starts ==============================
+platform linux -- Python 3.6.9, pytest-7.0.1, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.6.9', 'Platform': 'Linux-5.4.0-124-generic-x86_64-with-Ubuntu-18.04-bionic', 'Packages': {'pytest': '7.0.1', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'allure-pytest': '2.9.45', 'html': '3.1.1', 'metadata': '1.11.0'}}
+rootdir: /home/alexander/ONLP_Automation/Scripts, configfile: pytest.ini
+plugins: allure-pytest-2.9.45, html-3.1.1, metadata-1.11.0
+collecting ... collected 3 items
+
+../Scripts/test_19.py::test_CheckPSUState[testbed] FAILED                [ 33%]
+../Scripts/test_20.py::test_CheckPSUStatus[testbed] FAILED               [ 66%]
+../Scripts/test_22.py::test_CheckPSUType[testbed] FAILED                 [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_CheckPSUState[testbed] __________________________
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUState(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'State')
+E       AttributeError: module 'testbed' has no attribute 'DUT1_IP'
+
+../Scripts/test_19.py:33: AttributeError
+---------------------------- Captured stdout setup -----------------------------
+<module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+_________________________ test_CheckPSUStatus[testbed] _________________________
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUStatus(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Status')
+E       AttributeError: module 'testbed' has no attribute 'DUT1_IP'
+
+../Scripts/test_20.py:32: AttributeError
+__________________________ test_CheckPSUType[testbed] __________________________
+
+test_importlib = <module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+
+    @pytest.mark.All
+    @pytest.mark.Sanity
+    def test_CheckPSUType(test_importlib):
+    
+        DUTInfo = test_importlib
+>       val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Type')
+E       AttributeError: module 'testbed' has no attribute 'DUT1_IP'
+
+../Scripts/test_22.py:32: AttributeError
+=============================== warnings summary ===============================
+../../.local/lib/python3.6/site-packages/invoke/loader.py:3
+  /home/alexander/.local/lib/python3.6/site-packages/invoke/loader.py:3: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated html file: file:///home/alexander/ONLP_Automation/main/Results/260945/Result.html -
+=========================== short test summary info ============================
+FAILED ../Scripts/test_19.py::test_CheckPSUState[testbed] - AttributeError: m...
+FAILED ../Scripts/test_20.py::test_CheckPSUStatus[testbed] - AttributeError: ...
+FAILED ../Scripts/test_22.py::test_CheckPSUType[testbed] - AttributeError: mo...
+========================= 3 failed, 1 warning in 0.14s =========================
+[1;33m======================== TESTCASE EXECUTION END  =====================================

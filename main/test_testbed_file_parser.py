@@ -42,7 +42,7 @@ def test_convert_yml_to_dict(testbed):
 
 @pytest.fixture
 def test_check_syntax_error(test_convert_yml_to_dict):    
-    config_schema = Schema({'HardwareList': {'DUT1': {'Hardware_type': str, 'access': {'protocol': str, 'ip': str, 'port': int}, 'credentials': {'username': str, 'password': str}}, 'DUT2': {'Hardware_type': str, 'access': {'protocol': str, 'ip': str, 'port': int}, 'credentials': {'username': str, 'password': str}}}, Optional('Connection'): {'DUT1': {Optional('interfaces'): [{'LocalPort': str, 'RemoteDevice': str, 'RemotePort': str}]}, 'DUT2': {Optional('interfaces'): [{'LocalPort': str, 'RemoteDevice': str, 'RemotePort': str}]}}})
+    config_schema = Schema({'Devices': {'DUT1': {'Hardware_type': str, 'access': {'protocol': str, 'ip': str, 'port': int}, 'credentials': {'username': str, 'password': str}}, 'DUT2': {'Hardware_type': str, 'access': {'protocol': str, 'ip': str, 'port': int}, 'credentials': {'username': str, 'password': str}}}, Optional('Topology'): {'DUT1': {Optional('interfaces'): [{'LocalPort': str, 'RemoteDevice': str, 'RemotePort': str}]}, 'DUT2': {Optional('interfaces'): [{'LocalPort': str, 'RemoteDevice': str, 'RemotePort': str}]}}})
 
     try:
         config_schema.validate(test_convert_yml_to_dict)
@@ -64,7 +64,7 @@ def test_CheckKeyExist(test_convert_yml_to_dict):
     global key
 
     my_dict = test_convert_yml_to_dict
-    key = 'Connection'
+    key = 'Topology'
 
     if key in my_dict:
         key = 1
@@ -86,18 +86,18 @@ def test_Populate_TmpFile(test_convert_yml_to_dict):
     new_filename = temp1 + new_filename
     print('\n')
     with open(new_filename, 'w+') as f:
-        DUT1_HwType = str(temp['HardwareList']['DUT1']['Hardware_type'])
-        DUT1_Protocol = str(temp['HardwareList']['DUT1']['access']['protocol'])
-        DUT1_IP = str(temp['HardwareList']['DUT1']['access']['ip'])
-        DUT1_Port = str(temp['HardwareList']['DUT1']['access']['port'])
-        DUT1_Username = str(temp['HardwareList']['DUT1']['credentials']['username'])
-        DUT1_Password = str(temp['HardwareList']['DUT1']['credentials']['password'])
-        DUT2_HwType = str(temp['HardwareList']['DUT2']['Hardware_type'])
-        DUT2_Protocol = str(temp['HardwareList']['DUT2']['access']['protocol'])
-        DUT2_IP = str(temp['HardwareList']['DUT2']['access']['ip'])
-        DUT2_Port = str(temp['HardwareList']['DUT2']['access']['port'])
-        DUT2_Username = str(temp['HardwareList']['DUT2']['credentials']['username'])
-        DUT2_Password = str(temp['HardwareList']['DUT2']['credentials']['password'])
+        DUT1_HwType = str(temp['Devices']['DUT1']['Hardware_type'])
+        DUT1_Protocol = str(temp['Devices']['DUT1']['access']['protocol'])
+        DUT1_IP = str(temp['Devices']['DUT1']['access']['ip'])
+        DUT1_Port = str(temp['Devices']['DUT1']['access']['port'])
+        DUT1_Username = str(temp['Devices']['DUT1']['credentials']['username'])
+        DUT1_Password = str(temp['Devices']['DUT1']['credentials']['password'])
+        DUT2_HwType = str(temp['Devices']['DUT2']['Hardware_type'])
+        DUT2_Protocol = str(temp['Devices']['DUT2']['access']['protocol'])
+        DUT2_IP = str(temp['Devices']['DUT2']['access']['ip'])
+        DUT2_Port = str(temp['Devices']['DUT2']['access']['port'])
+        DUT2_Username = str(temp['Devices']['DUT2']['credentials']['username'])
+        DUT2_Password = str(temp['Devices']['DUT2']['credentials']['password'])
         
         f.write(str('DUT1_HwType') + "=" + "\"" + DUT1_HwType + "\"" + '\n')
         f.write(str('DUT1_Protocol') + "=" + "\"" + DUT1_Protocol + "\"" + '\n')
@@ -112,8 +112,8 @@ def test_Populate_TmpFile(test_convert_yml_to_dict):
         
         if key == 1:
         
-            DUT1interfaceList = temp['Connection']['DUT1']['interfaces']
-            DUT2interfaceList = temp['Connection']['DUT2']['interfaces']
+            DUT1interfaceList = temp['Topology']['DUT1']['interfaces']
+            DUT2interfaceList = temp['Topology']['DUT2']['interfaces']
 
             Trunk = dict()
 

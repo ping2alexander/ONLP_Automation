@@ -7,7 +7,7 @@ from ssh_login import Login
 def GetProductName(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -21,7 +21,7 @@ def GetProductName(IPAddress):
 def GetPartNumber(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -36,7 +36,7 @@ def GetPartNumber(IPAddress):
 def GetSerialNumber(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -51,7 +51,7 @@ def GetSerialNumber(IPAddress):
 def GetDeviceMAC(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -66,7 +66,7 @@ def GetDeviceMAC(IPAddress):
 def GetDeviceManufacturer(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -82,7 +82,7 @@ def GetDeviceManufacturer(IPAddress):
 def GetDeviceVendor(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -97,7 +97,7 @@ def GetDeviceVendor(IPAddress):
 def GetPlatformName(IPAddress):
 
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -111,7 +111,7 @@ def GetPlatformName(IPAddress):
 
 def GetDeviceVersion(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -126,7 +126,7 @@ def GetDeviceVersion(IPAddress):
 
 def GetLabelRevision(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -141,7 +141,7 @@ def GetLabelRevision(IPAddress):
 
 def GetDiagVersion(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -156,7 +156,7 @@ def GetDiagVersion(IPAddress):
 
 def GetServiceTag(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -171,7 +171,7 @@ def GetServiceTag(IPAddress):
 
 def GetONIEVersion(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())
@@ -186,7 +186,7 @@ def GetONIEVersion(IPAddress):
 
 def GetCountryCode(IPAddress):
     DUT = Login(IPAddress, 'root', 'onl')
-    input1 = DUT.SendACommand('cat onlpdump')
+    input1 = DUT.SendACommand('onlpdump')
 
     with open('tmp.yml', 'w') as f:
         f.write(input1.strip())

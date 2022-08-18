@@ -27,13 +27,13 @@ with open(newname,"r") as r:
 
 key = 'DUT1'
 
-if 'DUT1' in data['HardwareList']:
+if 'DUT1' in data['Devices']:
     num_of_dut = 1
-if 'DUT2' in data['HardwareList']:
+if 'DUT2' in data['Devices']:
     num_of_dut = 2
 
-if 'Connection' in data:
-    num_of_trunk  = len(data['Connection']['DUT1']['interfaces'])
+if 'Topology' in data:
+    num_of_trunk  = len(data['Topology']['DUT1']['interfaces'])
 
 
 #print("Number of DUTs: {}".format(num_of_dut))
@@ -78,13 +78,13 @@ if num_of_dut == 2:
             print("|", end='')
         if i % 2 == 0:
             if interface_index < num_of_trunk:
-                t1 = len('(' + data['Connection']['DUT1']['interfaces'][interface_index]['LocalPort'] + ')')
-                t2 = len('(' + data['Connection']['DUT1']['interfaces'][interface_index]['RemotePort'] + ')')
+                t1 = len('(' + data['Topology']['DUT1']['interfaces'][interface_index]['LocalPort'] + ')')
+                t2 = len('(' + data['Topology']['DUT1']['interfaces'][interface_index]['RemotePort'] + ')')
                 remaining_len = 48 - (t1 + t2)
-                print('(' + data['Connection']['DUT1']['interfaces'][interface_index]['LocalPort'] + ')', end='')
+                print('(' + data['Topology']['DUT1']['interfaces'][interface_index]['LocalPort'] + ')', end='')
                 for j in range(remaining_len):
                     print("-", end='')
-                print('(' + data['Connection']['DUT1']['interfaces'][interface_index]['RemotePort'] + ')', end='')
+                print('(' + data['Topology']['DUT1']['interfaces'][interface_index]['RemotePort'] + ')', end='')
                 interface_index = interface_index + 1
             print("|", end='')
 
