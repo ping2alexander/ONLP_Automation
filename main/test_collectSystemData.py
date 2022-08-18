@@ -107,7 +107,7 @@ def test_collect_sysinfo(test_importlib):
 
     DUT1 = Login(DUTInfo.DUT1_IP, DUTInfo.DUT1_Username, DUTInfo.DUT1_Password)
 
-    input1 = DUT1.SendACommand('cat onlpdump')
+    input1 = DUT1.SendACommand('onlpdump')
 
     with open('a.yml', 'w') as f:
         f.write(input1.strip())
@@ -161,7 +161,7 @@ def test_collect_sysinfo(test_importlib):
      
     DUT2 = Login(DUTInfo.DUT2_IP, DUTInfo.DUT2_Username, DUTInfo.DUT2_Password)
 
-    input2 = DUT2.SendACommand('cat onlpdump')
+    input2 = DUT2.SendACommand('onlpdump')
 
     with open('a.yml', 'w') as f:
         f.write(input2.strip())

@@ -5,7 +5,7 @@ from ssh_login import Login
 def Get_Fan_Value(IPAddress, FanIndex, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)
@@ -28,7 +28,7 @@ def Get_Fan_Value(IPAddress, FanIndex, key):
 def Get_PSU_Value(IPAddress, PSU, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)
@@ -50,7 +50,7 @@ def Get_PSU_Value(IPAddress, PSU, key):
 def Get_PSU_FAN_Value(IPAddress, PSU, FAN, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)
@@ -73,7 +73,7 @@ def Get_PSU_FAN_Value(IPAddress, PSU, FAN, key):
 def Get_PSU_Thermal_Value(IPAddress, PSU, Thermal, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)
@@ -97,7 +97,7 @@ def Get_PSU_Thermal_Value(IPAddress, PSU, Thermal, key):
 def Get_Thermal_Value(IPAddress, Thermal, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)
@@ -121,7 +121,7 @@ def Get_Thermal_Value(IPAddress, Thermal, key):
 def Get_LED_Value(IPAddress, LED, key):
     DUT = Login(IPAddress, 'root', 'onl')
 
-    data = DUT.SendACommand('cat onlpdump_ery.yml')
+    data = DUT.SendACommand('onlpdump -ery')
 
     with open('test.yml','w') as w:
         w.write(data)

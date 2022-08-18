@@ -1,0 +1,19 @@
+
+ ---------------------------------------------------------------------------------------------------- 
+|                                                                                                    |
+|                     ONL(Open Network Linux) Automation                                             |
+|                                                                                                    |
+ ---------------------------------------------------------------------------------------------------- 
+*****************************************************************************************
+Step:1 - Validating the commandline arguments passed to the main shell script
+*****************************************************************************************
+[1;31mError: Mandatory commandline arguments are missing - please check usage information
+[1;37m
+[1;32mUsage: ./run_onlscript.sh [options]
+[1;32mOption with (*) must be provided
+[1;32m-t <testbed filename>		- Specify testbed filename(*)
+[1;32m-s <individul script name>	- Specify test cases to execute.
+[1;32m-m <pytestmarker>		- Specity the testcase groupname
+[1;33m				  Example: -m "All" or -m "Sanity"
+[1;33m					   -m "Belgite"
+[1;37m
