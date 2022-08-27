@@ -1,0 +1,12 @@
+Chassis Fan 1
+Chassis Fan 2
+Chassis Fan 3
+Chassis Fan 4
+Specified key is not present in the dictionary file
+Specified key is not present in the dictionary file
+Specified key is not present in the dictionary file
+Specified key is not present in the dictionary file
+No Fan modules found in the PSU
+No Fan modules found in the PSU
+Validation Passed
+Validation Passed

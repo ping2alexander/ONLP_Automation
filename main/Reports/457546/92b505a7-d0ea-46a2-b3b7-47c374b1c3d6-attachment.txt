@@ -1,0 +1,4 @@
+<module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+Error: Could not chdir to home directory /home/admin: No such file or directory
+bash: onlpdump: command not found
+

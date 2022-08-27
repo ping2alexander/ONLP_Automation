@@ -31,7 +31,7 @@ def test_CheckPSUType(test_importlib):
     DUTInfo = test_importlib
     val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Type')
 
-    result = KeyValueMatch(val, 'AC', 'Match')
+    result = KeyValueMatch(val)
 
     print(result)
 

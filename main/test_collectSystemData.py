@@ -105,9 +105,10 @@ def test_collect_sysinfo(test_importlib):
         print(Style.RESET_ALL)
         exit
 
+
     DUT1 = Login(DUTInfo.DUT1_IP, DUTInfo.DUT1_Username, DUTInfo.DUT1_Password)
 
-    input1 = DUT1.SendACommand('onlpdump')
+    input1 = DUT1.SendACommand('/lib/platform-config/current/onl/bin/onlpdump -s')
 
     with open('a.yml', 'w') as f:
         f.write(input1.strip())
@@ -133,7 +134,6 @@ def test_collect_sysinfo(test_importlib):
         DUT1_Label_Revision = str(res['System Information']['Label Revision'])
         DUT1_Country_Code = str(res['System Information']['Country Code'])
         DUT1_Diag_Version = str(res['System Information']['Diag Version'])
-        DUT1_Service_Tag = str(res['System Information']['Service Tag'])
         DUT1_ONIE_Version = str(res['System Information']['ONIE Version'])
 
         f.write(str('DUT1_Product_Name') + "=" + "\"" + DUT1_Product_Name + "\"" + '\n')
@@ -149,7 +149,6 @@ def test_collect_sysinfo(test_importlib):
         f.write(str('DUT1_Label_Revision') + "=" + "\"" + DUT1_Label_Revision + "\"" + '\n')
         f.write(str('DUT1_Country_Code') + "=" + "\"" + DUT1_Country_Code + "\"" + '\n')
         f.write(str('DUT1_Diag_Version') + "=" + "\"" + DUT1_Diag_Version + "\"" + '\n')
-        f.write(str('DUT1_Service_Tag') + "=" + "\"" + DUT1_Service_Tag + "\"" + '\n')
         f.write(str('DUT1_ONIE_Version') + "=" + "\"" + DUT1_ONIE_Version + "\"" + '\n')
 
     try:
@@ -161,7 +160,7 @@ def test_collect_sysinfo(test_importlib):
      
     DUT2 = Login(DUTInfo.DUT2_IP, DUTInfo.DUT2_Username, DUTInfo.DUT2_Password)
 
-    input2 = DUT2.SendACommand('onlpdump')
+    input2 = DUT2.SendACommand('/lib/platform-config/current/onl/bin/onlpdump -s')
 
     with open('a.yml', 'w') as f:
         f.write(input2.strip())
@@ -183,7 +182,6 @@ def test_collect_sysinfo(test_importlib):
         DUT2_Label_Revision = str(res['System Information']['Label Revision'])
         DUT2_Country_Code = str(res['System Information']['Country Code'])
         DUT2_Diag_Version = str(res['System Information']['Diag Version'])
-        DUT2_Service_Tag = str(res['System Information']['Service Tag'])
         DUT2_ONIE_Version = str(res['System Information']['ONIE Version'])
 
 
@@ -200,7 +198,6 @@ def test_collect_sysinfo(test_importlib):
         f.write(str('DUT2_Label_Revision') + "=" + "\"" + DUT2_Label_Revision + "\"" + '\n')
         f.write(str('DUT2_Country_Code') + "=" + "\"" + DUT2_Country_Code + "\"" + '\n')
         f.write(str('DUT2_Diag_Version') + "=" + "\"" + DUT2_Diag_Version + "\"" + '\n')
-        f.write(str('DUT2_Service_Tag') + "=" + "\"" + DUT2_Service_Tag + "\"" + '\n')
         f.write(str('DUT2_ONIE_Version') + "=" + "\"" + DUT2_ONIE_Version + "\"" + '\n')        
     #except NameError:
     #    print(Fore.RED + "DUT2_IP is not defined in the configuration file")

@@ -1,0 +1,12 @@
+Fan-1 Description : Chassis Fan 1
+Fan-2 Description : Chassis Fan 2
+Fan-3 Description : Chassis Fan 3
+Fan-4 Description : Chassis Fan 4
+Validation Passed
+Validation Passed
+Validation Passed
+Validation Passed
+No Fan modules found in the PSU
+No Fan modules found in the PSU
+No modules found in the specified hardware
+No modules found in the specified hardware
