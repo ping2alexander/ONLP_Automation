@@ -33,25 +33,23 @@ def test_importlib(filename):
 
 @pytest.mark.All
 @pytest.mark.Sanity
-@pytest.mark.P2
 def test_Check_FAN_Description(test_importlib):
 
     DUTInfo = test_importlib
 
-    fan1 = Get_FAN_Value(DUTInfo.DUT1_IP, 1, 'Description')
-    fan2 = Get_FAN_Value(DUTInfo.DUT1_IP, 2, 'Description')
-    fan3 = Get_FAN_Value(DUTInfo.DUT1_IP, 3, 'Description')
-    fan4 = Get_FAN_Value(DUTInfo.DUT1_IP, 4, 'Description')
+    fan1 = Get_Fan_Value(DUTInfo.DUT1_IP, 1, 'Description')
+    fan2 = Get_Fan_Value(DUTInfo.DUT1_IP, 2, 'Description')
+    fan3 = Get_Fan_Value(DUTInfo.DUT1_IP, 3, 'Description')
+    fan4 = Get_Fan_Value(DUTInfo.DUT1_IP, 4, 'Description')
 
-    fan1_result = KeyValueMatch(fan1, 'chassis Fan 1', 'Match')
-    fan2_result = KeyValueMatch(fan2, 'chassis Fan 2', 'Match')
-    fan3_result = KeyValueMatch(fan3, 'chassis Fan 3', 'Match')
-    fan4_result = KeyValueMatch(fan4, 'chassis Fan 4', 'Match')
-
+    fan1_result = KeyValueMatch(fan1)
+    fan2_result = KeyValueMatch(fan2)
+    fan3_result = KeyValueMatch(fan3)
+    fan4_result = KeyValueMatch(fan4)
 
     psu_1_fan = Get_PSU_FAN_Value(DUTInfo.DUT1_IP, 1, 1, 'Description')
     psu_2_fan = Get_PSU_FAN_Value(DUTInfo.DUT1_IP, 2, 1, 'Description')
 
-    psu_1_fan_result = KeyValueMatch(psu_1_fan, 'PSU Fan 1', 'Match')
-    psu_2_fan_result = KeyValueMatch(psu_2_fan, 'PSU Fan 2', 'Match')
+    psu_1_fan_result = KeyValueMatch(psu_1_fan)
+    psu_2_fan_result = KeyValueMatch(psu_2_fan)
 

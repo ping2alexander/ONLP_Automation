@@ -1,0 +1,12 @@
+Chassis Fan 1
+Chassis Fan 2
+Chassis Fan 3
+Chassis Fan 4
+[{'Name': 'PSU 1', 'Description': 'PSU-Left', 'State': 'Present', 'Status': 'Running', 'Model': 'DPS-550AB-21 B', 'SN': 'IRJD1733002568', 'Type': 'Unknown', 'Fans': None, 'Thermals': None}, {'Name': 'PSU 2', 'Description': 'PSU-Right', 'State': 'Present', 'Status': 'Running', 'Model': 'DPS-550AB-21 B', 'SN': 'IRJD1733000688', 'Type': 'Unknown', 'Fans': None, 'Thermals': None}]
+PSU Fan None
+No Fan modules found in the PSU
+[{'Name': 'PSU 1', 'Description': 'PSU-Left', 'State': 'Present', 'Status': 'Running', 'Type': 'Unknown', 'Fans': None, 'Thermals': None}, {'Name': 'PSU 2', 'Description': 'PSU-Right', 'State': 'Present', 'Status': 'Running', 'Type': 'Unknown', 'Fans': None, 'Thermals': None}]
+PSU Fan None
+No Fan modules found in the PSU
+Validation Passed
+Validation Passed

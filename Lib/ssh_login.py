@@ -1,5 +1,6 @@
 import pytest
 import paramiko
+import time
 
 class Login():
     def __init__(self, ipaddress, Username, Passwd):
@@ -32,11 +33,12 @@ class Login():
         if status is 0:
             res = stdout.read().decode("utf8")
             return res;
-
         elif status is -1:
             print("Error: CLI Command is not yet executed")
             print(stderr.read().decode("utf8"));
             exit;
         else:
-            print("Error: {}".format(stderr.read().decode("utf8")))
+            print(status)
+            print("CLI Error: {}".format(stderr.read().decode("utf8")))
+
 

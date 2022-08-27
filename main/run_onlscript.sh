@@ -250,7 +250,7 @@ echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ==============
 
 echo "Copying log and results to the FTP server" > /dev/null
 
-HOST='172.24.77.188'
+HOST='172.17.238.53'
 USER='admin'
 PASSWD='admin'
 Remotelocation='/'

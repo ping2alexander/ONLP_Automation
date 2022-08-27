@@ -1,0 +1,172 @@
+ System Information:
+   Product Name: DX030
+   Part Number: R1157-F0002-02
+   Serial Number: DX030B2F048414GD100005
+   MAC: 00:e0:ec:80:87:bc
+   MAC Range: 132
+   Manufacturer: Celestica
+   Manufacture Date: 09/25/2017 16:12:05
+   Vendor: Celestica
+   Platform Name: x86_64-cel_seastone_2-r0
+   Device Version: 4
+   Label Revision: Seastone-II
+   Country Code: CHN
+   Diag Version: 1.0.9
+   ONIE Version: 2017.08.01.0.0.5
+ Fans:
+   - 
+     Name: Fan 1
+     Description: Chassis Fan 1
+     State: Present
+     Status: Running
+     Model: Use Celestica P/N
+     SN: Use Celestica S/N
+     Airflow: Back-to-Front
+   - 
+     Name: Fan 2
+     Description: Chassis Fan 2
+     State: Present
+     Status: Running
+     Model: Use Celestica P/N
+     SN: Use Celestica S/N
+     Airflow: Back-to-Front
+   - 
+     Name: Fan 3
+     Description: Chassis Fan 3
+     State: Present
+     Status: Running
+     Airflow: Back-to-Front
+   - 
+     Name: Fan 4
+     Description: Chassis Fan 4
+     State: Present
+     Status: Running
+     Airflow: Back-to-Front
+ Thermals:
+   - 
+     Name: Thermal 1
+     Description: Base_Temp_U5
+     Status: Functional
+     Temperature: 27.0 C
+   - 
+     Name: Thermal 2
+     Description: Base_Temp_U7
+     Status: Functional
+     Temperature: 26.0 C
+   - 
+     Name: Thermal 3
+     Description: CPU_Temp
+     Status: Functional
+     Temperature: 0.0 C
+   - 
+     Name: Thermal 4
+     Description: Switch_Temp_U1
+     Status: Functional
+     Temperature: 32.0 C
+   - 
+     Name: Thermal 5
+     Description: Switch_Temp_U18
+     Status: Functional
+     Temperature: 30.0 C
+   - 
+     Name: Thermal 6
+     Description: Switch_Temp_U28
+     Status: Functional
+     Temperature: 28.0 C
+   - 
+     Name: Thermal 7
+     Description: Switch_Temp_U29
+     Status: Functional
+     Temperature: 28.0 C
+   - 
+     Name: Thermal 8
+     Description: PSUL_Temp1
+     Status: Functional
+     Temperature: 25.0 C
+   - 
+     Name: Thermal 9
+     Description: PSUL_Temp2
+     Status: Functional
+     Temperature: 32.0 C
+   - 
+     Name: Thermal 10
+     Description: PSUR_Temp1
+     Status: Functional
+     Temperature: 26.0 C
+   - 
+     Name: Thermal 11
+     Description: PSUR_Temp2
+     Status: Functional
+     Temperature: 26.0 C
+   - 
+     Name: Thermal 12
+     Description: Switch_U21_Temp
+     State: Missing
+   - 
+     Name: Thermal 13
+     Description: Switch_U33_Temp
+     State: Missing
+ PSUs:
+   - 
+     Name: PSU 1
+     Description: PSU-Left
+     State: Present
+     Status: Running
+     Model: DPS-550AB-21 B
+     SN: IRJD1733002568
+     Type: Unknown
+     Fans: 
+     Thermals: 
+   - 
+     Name: PSU 2
+     Description: PSU-Right
+     State: Present
+     Status: Running
+     Model: DPS-550AB-21 B
+     SN: IRJD1733000688
+     Type: Unknown
+     Fans: 
+     Thermals: 
+ LEDs:
+    -
+     Name: LED 1
+     Description: Chassis System LED(DIAG LED)
+     State: Present
+     Mode: AUTO_BLINKING
+    -
+     Name: LED 2
+     Description: Chassis FAN(1) LED
+     State: Present
+     Mode: GREEN
+    -
+     Name: LED 3
+     Description: Chassis FAN(2) LED
+     State: Present
+     Mode: GREEN
+    -
+     Name: LED 4
+     Description: Chassis FAN(3) LED
+     State: Present
+     Mode: GREEN
+    -
+     Name: LED 5
+     Description: Chassis FAN(4) LED
+     State: Present
+     Mode: GREEN
+    -
+     Name: LED 6
+     Description: Alert LED
+     State: Present
+     Mode: YELLOW_BLINKING
+    -
+     Name: LED 7
+     Description: Left PSU LED
+     State: Present
+     Mode: AUTO
+    -
+     Name: LED 8
+     Description: Right PSU LED
+     State: Present
+     Mode: AUTO
+
+None

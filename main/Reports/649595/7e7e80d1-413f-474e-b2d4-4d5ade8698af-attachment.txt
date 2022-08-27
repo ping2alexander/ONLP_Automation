@@ -1,0 +1,4 @@
+<module 'testbed' from '/home/alexander/ONLP_Automation/tmp/testbed.py'>
+<paramiko.ChannelFile from <paramiko.Channel 0 (open) window=2097152 -> <paramiko.Transport at 0x73bdf8d0 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>>>
+Error: bash: onlpdump: command not found
+

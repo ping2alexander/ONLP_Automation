@@ -31,7 +31,7 @@ def test_CheckPSUStatus(test_importlib):
     DUTInfo = test_importlib
     val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'Status')
 
-    result = KeyValueMatch(val, 'Running', 'Match')
+    result = KeyValueMatch(val)
 
     print(result)
 

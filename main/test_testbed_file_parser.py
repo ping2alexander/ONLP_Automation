@@ -98,7 +98,7 @@ def test_Populate_TmpFile(test_convert_yml_to_dict):
         DUT2_Port = str(temp['Devices']['DUT2']['access']['port'])
         DUT2_Username = str(temp['Devices']['DUT2']['credentials']['username'])
         DUT2_Password = str(temp['Devices']['DUT2']['credentials']['password'])
-        
+
         f.write(str('DUT1_HwType') + "=" + "\"" + DUT1_HwType + "\"" + '\n')
         f.write(str('DUT1_Protocol') + "=" + "\"" + DUT1_Protocol + "\"" + '\n')
         f.write(str('DUT1_IP') + "=" + "\"" + DUT1_IP + "\"" + '\n')
@@ -109,7 +109,7 @@ def test_Populate_TmpFile(test_convert_yml_to_dict):
         f.write(str('DUT2_IP') + "=" + "\"" + DUT2_IP + "\"" + '\n')
         f.write(str('DUT2_Username') + "=" + "\"" + DUT2_Username + "\"" + '\n')
         f.write(str('DUT2_Password') + "=" + "\"" + DUT2_Password + "\"" + '\n')
-        
+
         if key == 1:
         
             DUT1interfaceList = temp['Topology']['DUT1']['interfaces']

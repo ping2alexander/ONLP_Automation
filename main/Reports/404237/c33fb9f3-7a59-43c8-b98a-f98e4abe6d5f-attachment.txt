@@ -1,0 +1,6 @@
+<paramiko.ChannelFile from <paramiko.Channel 0 (open) window=2097152 -> <paramiko.Transport at 0x8913f240 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>>>
+<paramiko.ChannelFile from <paramiko.Channel 0 (open) window=2097152 -> <paramiko.Transport at 0x8913f240 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>>>
+<paramiko.ChannelFile from <paramiko.Channel 0 (open) window=2097152 -> <paramiko.Transport at 0x8913f240 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>>>
+Error: Could not chdir to home directory /home/admin: No such file or directory
+bash: onlpdump: command not found
+
