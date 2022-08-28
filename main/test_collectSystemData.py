@@ -2,13 +2,17 @@ import pytest
 import os.path as path
 import sys
 import importlib
-import imp
+#import imp
 import json
 import yaml
 import time
 import logging
 import os
 from colorama import Fore, Back, Style
+
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
+import imp
 
 parentdir = path.abspath(path.join(__file__,"../.."))
 libpath = parentdir + '/Lib'
