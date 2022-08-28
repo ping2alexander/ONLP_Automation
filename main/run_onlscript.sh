@@ -195,7 +195,7 @@ CONSOLE_LOG='-s'
 FILENAME=${TEMPFILE}
 EXTRA_CLI_ARGUMENT="--filename ${FILENAME} --testbed ${TESTBED}"
 
-pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py ${EXTRA_CLI_ARGUMENT} 
+pytest ${DEBUG} ${CONSOLE_LOG} ./test_testbed_file_parser.py -W ignore::DeprecationWarning ${EXTRA_CLI_ARGUMENT} 
 
 echo -e "\e[1;35m******************************************************************************************"
 echo -e "\e[1;35mStep: 5                   Topology Diagram                              "
@@ -214,7 +214,7 @@ echo -e "\e[1;34mStep: 5                   DUTs PING test                       
 echo -e "\e[1;34m******************************************************************************************"
 
 
-pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py ${EXTRA_CLI_ARGUMENT_LIST}
+pytest ${DEBUG} ${CONSOLE_LOG} ./test_collectSystemData.py -W ignore::DeprecationWarning ${EXTRA_CLI_ARGUMENT_LIST}
 
 
 #Testcase execution start
@@ -230,18 +230,18 @@ if [[ ! -z ${SCRIPT} ]]; then
 	if [[ ! -z ${REPORT} ]]; then
 		for testcase in $TESTCASES
 		do
-			pytest ${DEBUG} ./../Scripts/${testcase} --alluredir=${REPORT}
+			pytest ${DEBUG} ./../Scripts/${testcase} -W ignore::DeprecationWarning --alluredir=${REPORT}
 		done
 	else
 		for testcase in $TESTCASES
                 do
-                        pytest ${DEBUG} ./../Scripts/${testcase} 
+                        pytest ${DEBUG} ./../Scripts/${testcase} -W ignore::DeprecationWarning
                 done
 	fi
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/Result.html
+	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ -W ignore::DeprecationWarning ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/Result.html
 fi
 
 echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ====================================="
