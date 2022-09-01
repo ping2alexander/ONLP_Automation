@@ -90,4 +90,8 @@ Index:
     RegId: '599002', Time: '14:14:32'}
   - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/918464"', Platform: Seastone-II,
     RegId: '918464', Time: '14:15:50'}
+  - {Date: 'August 29, 2022', Page: '"http://172.17.238.53/833058"', Platform: Seastone-II,
+    RegId: '833058', Time: '11:00:49'}
+  - {Date: 'August 29, 2022', Page: '"http://172.17.238.53/148604"', Platform: Seastone-II,
+    RegId: '148604', Time: '11:48:18'}
   Table_Name: ONL
