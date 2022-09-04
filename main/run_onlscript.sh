@@ -241,8 +241,14 @@ if [[ ! -z ${SCRIPT} ]]; then
 fi
 
 if [[ ! -z ${MARKER} ]]; then
-	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ -W ignore::DeprecationWarning ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=${PARENTPATH}/${Reportdir}/${subdir} --html=${PARENTPATH}/${Resultdir}/${subdir}/Result.html
+	pytest ${DEBUG} -m ${MARKER} ./../Scripts/ -W ignore::DeprecationWarning ${EXTRA_CLI_ARGUMENT_LIST} --alluredir=summary --html=${PARENTPATH}/${Resultdir}/${subdir}/Result.html
 fi
+
+echo "Testcase statistics"
+
+allure generate summary -o ${subdir}
+
+python3 statistics.py ${subdir}
 
 echo -e "\e[1;33m======================== TESTCASE EXECUTION END  ====================================="
 

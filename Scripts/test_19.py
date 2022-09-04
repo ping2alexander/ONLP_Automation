@@ -31,8 +31,11 @@ def test_CheckPSUState(test_importlib):
 
     DUTInfo = test_importlib
     val = Get_PSU_Value(DUTInfo.DUT1_IP, 1, 'State')
+    val = -1
 
-    result = KeyValueMatch(val)
+    obj = CheckKeyValue()
+
+    result = obj.KeyValueMatch(val)
 
     print(result)
 

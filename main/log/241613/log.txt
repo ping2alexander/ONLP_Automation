@@ -1,0 +1,73 @@
+
+ ---------------------------------------------------------------------------------------------------- 
+|                                                                                                    |
+|                     ONL(Open Network Linux) Automation                                             |
+|                                                                                                    |
+ ---------------------------------------------------------------------------------------------------- 
+*****************************************************************************************
+Step:1 - Validating the commandline arguments passed to the main shell script
+*****************************************************************************************
+[1;32mTestcase groupname(pytest marker) is not given as a input argument. Choosing default argument "All"
+[1;37m
+[1;34mCommandline arguments and environment variable declared
+[1;34m*******************************************************
+[1;34m|	Testbed Filename       : testbed.yml
+[1;34m|	Temp Filename          : testbed
+[1;34m|	Testcase groupname     : All
+[1;34m|	Script location        : /data/ONLP_Automation/Scripts
+[1;34m|	Testbed file location  : /data/ONLP_Automation/cfg
+[1;34m|	Library file location  : /data/ONLP_Automation/Lib
+[1;37m
+*****************************************************************************************
+Step:2 - Check testbed file existence
+*****************************************************************************************
+Check if testbed file is present in the specific location
+Tesbed file location: /data/ONLP_Automation/cfg
+Testbed filename: testbed.yml
+[1;32mSuccess: Testbed file is present in the configuration directory !!!
+[1;37m
+[1;36m******************************************************************************************
+[1;36mStep:3 Parse testbed file and create a tmp file contains all test variable under: ./../tmp folder
+[1;36m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.7.3, pytest-7.1.2, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.7.3', 'Platform': 'Linux-5.4.0-124-generic-x86_64-with-debian-10.12', 'Packages': {'pytest': '7.1.2', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'html': '3.1.1', 'allure-pytest': '2.8.22', 'celery': '4.4.7', 'forked': '1.4.0', 'repeat': '0.9.1', 'ansible': '2.2.4', 'xdist': '1.28.0', 'metadata': '2.0.2'}}
+ansible: 2.8.12
+rootdir: /data/ONLP_Automation/main
+plugins: html-3.1.1, allure-pytest-2.8.22, celery-4.4.7, forked-1.4.0, repeat-0.9.1, ansible-2.2.4, xdist-1.28.0, metadata-2.0.2
+collecting ... collected 4 items
+
+test_testbed_file_parser.py::test_parse_testbed_file[testbed.yml] PASSED
+test_testbed_file_parser.py::test_CheckKeyExist[testbed.yml] PASSED
+test_testbed_file_parser.py::test_createTmpFile[testbed-testbed.yml] PASSED
+test_testbed_file_parser.py::test_Populate_TmpFile[testbed.yml] 
+
+[32mTMP file is created successfully !!!
+PASSED
+
+============================== 4 passed in 0.05s ===============================
+[0m[1;35m******************************************************************************************
+[1;35mStep: 5                   Topology Diagram                              
+[1;35m******************************************************************************************
+ ------------------------                                                  ------------------------
+|                        |(Ethernet1)-------------------------(Ethernet11)|                        |
+|          DUT1          |                                                |          DUT2          |
+|                        |(Ethernet2)-------------------------(Ethernet12)|                        |
+|                        |                                                |                        |
+ ------------------------                                                  ------------------------
+
+[1;37m
+[1;34m******************************************************************************************
+[1;34mStep: 5                   DUTs PING test                              
+[1;34m******************************************************************************************
+============================= test session starts ==============================
+platform linux -- Python 3.7.3, pytest-7.1.2, pluggy-1.0.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.7.3', 'Platform': 'Linux-5.4.0-124-generic-x86_64-with-debian-10.12', 'Packages': {'pytest': '7.1.2', 'py': '1.11.0', 'pluggy': '1.0.0'}, 'Plugins': {'html': '3.1.1', 'allure-pytest': '2.8.22', 'celery': '4.4.7', 'forked': '1.4.0', 'repeat': '0.9.1', 'ansible': '2.2.4', 'xdist': '1.28.0', 'metadata': '2.0.2'}}
+ansible: 2.8.12
+rootdir: /data/ONLP_Automation/main
+plugins: html-3.1.1, allure-pytest-2.8.22, celery-4.4.7, forked-1.4.0, repeat-0.9.1, ansible-2.2.4, xdist-1.28.0, metadata-2.0.2
+collecting ... collected 2 items
+
+test_collectSystemData.py::test_reachability[testbed] PING 192.168.20.51 (192.168.20.51): 56 data bytes

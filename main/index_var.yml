@@ -1,97 +1,373 @@
 Index:
   Entries:
-  - {Date: 'August 18, 2022', Page: '"http://172.24.77.188/127128"', Platform: Seastone-IIA,
-    RegId: '127128', Time: '13:52:48'}
-  - {Date: 'August 18, 2022', Page: '"http://172.24.77.188/871232"', Platform: Seastone-IIA,
-    RegId: '871232', Time: '13:54:37'}
-  - {Date: 'August 18, 2022', Page: '"http://172.24.77.188/957406"', Platform: Seastone-IIA,
-    RegId: '957406', Time: '14:28:56'}
-  - {Date: 'August 18, 2022', Page: '"http://172.24.77.188/749158"', Platform: Seastone-IIA,
-    RegId: '749158', Time: '14:31:48'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/993712"', Platform: Seastone-II,
-    RegId: '993712', Time: '14:23:01'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/975837"', Platform: Seastone-II,
-    RegId: '975837', Time: '14:33:14'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/536138"', Platform: Seastone-II,
-    RegId: '536138', Time: '14:42:46'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/932203"', Platform: Seastone-II,
-    RegId: '932203', Time: '14:54:46'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/333907"', Platform: Seastone-II,
-    RegId: '333907', Time: '14:56:40'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/257496"', Platform: Seastone-II,
-    RegId: '257496', Time: '15:05:12'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/298011"', Platform: Seastone-II,
-    RegId: '298011', Time: '15:20:36'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/553215"', Platform: Seastone-II,
-    RegId: '553215', Time: '15:24:14'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/901653"', Platform: Seastone-II,
-    RegId: '901653', Time: '15:27:24'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/662760"', Platform: Seastone-II,
-    RegId: '662760', Time: '15:31:22'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/998833"', Platform: Seastone-II,
-    RegId: '998833', Time: '15:59:50'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/507034"', Platform: Seastone-II,
-    RegId: '507034', Time: '16:01:49'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/343369"', Platform: Seastone-II,
-    RegId: '343369', Time: '16:03:37'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/952877"', Platform: Seastone-II,
-    RegId: '952877', Time: '16:05:41'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/173230"', Platform: Seastone-II,
-    RegId: '173230', Time: '16:09:17'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/251620"', Platform: Seastone-II,
-    RegId: '251620', Time: '16:10:44'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/800771"', Platform: Seastone-II,
-    RegId: '800771', Time: '16:16:18'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/629180"', Platform: Seastone-II,
-    RegId: '629180', Time: '16:20:21'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/476033"', Platform: Seastone-II,
-    RegId: '476033', Time: '16:32:19'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/616640"', Platform: Seastone-II,
-    RegId: '616640', Time: '16:37:58'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/298619"', Platform: Seastone-II,
-    RegId: '298619', Time: '16:53:29'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/614010"', Platform: Seastone-II,
-    RegId: '614010', Time: '16:54:46'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/207224"', Platform: Seastone-II,
-    RegId: '207224', Time: '16:55:43'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/851879"', Platform: Seastone-II,
-    RegId: '851879', Time: '16:56:51'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/179119"', Platform: Seastone-II,
-    RegId: '179119', Time: '17:13:04'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/344159"', Platform: Seastone-II,
-    RegId: '344159', Time: '17:13:50'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/283266"', Platform: Seastone-II,
-    RegId: '283266', Time: '17:16:35'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/111380"', Platform: Seastone-II,
-    RegId: '111380', Time: '17:18:19'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/182283"', Platform: Seastone-II,
-    RegId: '182283', Time: '17:21:41'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/525711"', Platform: Seastone-II,
-    RegId: '525711', Time: '17:30:00'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/359218"', Platform: Seastone-II,
-    RegId: '359218', Time: '17:30:33'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/529079"', Platform: Seastone-II,
-    RegId: '529079', Time: '17:36:24'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/537764"', Platform: Seastone-II,
-    RegId: '537764', Time: '18:00:26'}
-  - {Date: 'August 27, 2022', Page: '"http://172.17.238.53/806393"', Platform: Seastone-II,
-    RegId: '806393', Time: '19:25:28'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/109266"', Platform: Seastone-II,
-    RegId: '109266', Time: '01:10:14'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/268261"', Platform: Seastone-II,
-    RegId: '268261', Time: '13:51:54'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/408526"', Platform: Seastone-II,
-    RegId: '408526', Time: '14:00:03'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/708972"', Platform: Seastone-II,
-    RegId: '708972', Time: '14:01:14'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/995063"', Platform: Seastone-II,
-    RegId: '995063', Time: '14:07:14'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/599002"', Platform: Seastone-II,
-    RegId: '599002', Time: '14:14:32'}
-  - {Date: 'August 28, 2022', Page: '"http://172.17.238.53/918464"', Platform: Seastone-II,
-    RegId: '918464', Time: '14:15:50'}
-  - {Date: 'August 29, 2022', Page: '"http://172.17.238.53/833058"', Platform: Seastone-II,
-    RegId: '833058', Time: '11:00:49'}
-  - {Date: 'August 29, 2022', Page: '"http://172.17.238.53/148604"', Platform: Seastone-II,
-    RegId: '148604', Time: '11:48:18'}
+  - Date: August 18, 2022
+    Page: '"http://172.24.77.188/127128"'
+    Platform: Seastone-IIA
+    RegId: '127128'
+    Time: '13:52:48'
+  - Date: August 18, 2022
+    Page: '"http://172.24.77.188/871232"'
+    Platform: Seastone-IIA
+    RegId: '871232'
+    Time: '13:54:37'
+  - Date: August 18, 2022
+    Page: '"http://172.24.77.188/957406"'
+    Platform: Seastone-IIA
+    RegId: '957406'
+    Time: '14:28:56'
+  - Date: August 18, 2022
+    Page: '"http://172.24.77.188/749158"'
+    Platform: Seastone-IIA
+    RegId: '749158'
+    Time: '14:31:48'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/993712"'
+    Platform: Seastone-II
+    RegId: '993712'
+    Time: '14:23:01'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/975837"'
+    Platform: Seastone-II
+    RegId: '975837'
+    Time: '14:33:14'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/536138"'
+    Platform: Seastone-II
+    RegId: '536138'
+    Time: '14:42:46'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/932203"'
+    Platform: Seastone-II
+    RegId: '932203'
+    Time: '14:54:46'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/333907"'
+    Platform: Seastone-II
+    RegId: '333907'
+    Time: '14:56:40'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/257496"'
+    Platform: Seastone-II
+    RegId: '257496'
+    Time: '15:05:12'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/298011"'
+    Platform: Seastone-II
+    RegId: '298011'
+    Time: '15:20:36'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/553215"'
+    Platform: Seastone-II
+    RegId: '553215'
+    Time: '15:24:14'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/901653"'
+    Platform: Seastone-II
+    RegId: '901653'
+    Time: '15:27:24'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/662760"'
+    Platform: Seastone-II
+    RegId: '662760'
+    Time: '15:31:22'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/998833"'
+    Platform: Seastone-II
+    RegId: '998833'
+    Time: '15:59:50'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/507034"'
+    Platform: Seastone-II
+    RegId: '507034'
+    Time: '16:01:49'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/343369"'
+    Platform: Seastone-II
+    RegId: '343369'
+    Time: '16:03:37'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/952877"'
+    Platform: Seastone-II
+    RegId: '952877'
+    Time: '16:05:41'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/173230"'
+    Platform: Seastone-II
+    RegId: '173230'
+    Time: '16:09:17'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/251620"'
+    Platform: Seastone-II
+    RegId: '251620'
+    Time: '16:10:44'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/800771"'
+    Platform: Seastone-II
+    RegId: '800771'
+    Time: '16:16:18'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/629180"'
+    Platform: Seastone-II
+    RegId: '629180'
+    Time: '16:20:21'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/476033"'
+    Platform: Seastone-II
+    RegId: '476033'
+    Time: '16:32:19'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/616640"'
+    Platform: Seastone-II
+    RegId: '616640'
+    Time: '16:37:58'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/298619"'
+    Platform: Seastone-II
+    RegId: '298619'
+    Time: '16:53:29'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/614010"'
+    Platform: Seastone-II
+    RegId: '614010'
+    Time: '16:54:46'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/207224"'
+    Platform: Seastone-II
+    RegId: '207224'
+    Time: '16:55:43'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/851879"'
+    Platform: Seastone-II
+    RegId: '851879'
+    Time: '16:56:51'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/179119"'
+    Platform: Seastone-II
+    RegId: '179119'
+    Time: '17:13:04'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/344159"'
+    Platform: Seastone-II
+    RegId: '344159'
+    Time: '17:13:50'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/283266"'
+    Platform: Seastone-II
+    RegId: '283266'
+    Time: '17:16:35'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/111380"'
+    Platform: Seastone-II
+    RegId: '111380'
+    Time: '17:18:19'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/182283"'
+    Platform: Seastone-II
+    RegId: '182283'
+    Time: '17:21:41'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/525711"'
+    Platform: Seastone-II
+    RegId: '525711'
+    Time: '17:30:00'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/359218"'
+    Platform: Seastone-II
+    RegId: '359218'
+    Time: '17:30:33'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/529079"'
+    Platform: Seastone-II
+    RegId: '529079'
+    Time: '17:36:24'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/537764"'
+    Platform: Seastone-II
+    RegId: '537764'
+    Time: '18:00:26'
+  - Date: August 27, 2022
+    Page: '"http://172.17.238.53/806393"'
+    Platform: Seastone-II
+    RegId: '806393'
+    Time: '19:25:28'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/109266"'
+    Platform: Seastone-II
+    RegId: '109266'
+    Time: 01:10:14
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/268261"'
+    Platform: Seastone-II
+    RegId: '268261'
+    Time: '13:51:54'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/408526"'
+    Platform: Seastone-II
+    RegId: '408526'
+    Time: '14:00:03'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/708972"'
+    Platform: Seastone-II
+    RegId: '708972'
+    Time: '14:01:14'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/995063"'
+    Platform: Seastone-II
+    RegId: '995063'
+    Time: '14:07:14'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/599002"'
+    Platform: Seastone-II
+    RegId: '599002'
+    Time: '14:14:32'
+  - Date: August 28, 2022
+    Page: '"http://172.17.238.53/918464"'
+    Platform: Seastone-II
+    RegId: '918464'
+    Time: '14:15:50'
+  - Date: August 29, 2022
+    Page: '"http://172.17.238.53/833058"'
+    Platform: Seastone-II
+    RegId: '833058'
+    Time: '11:00:49'
+  - Date: August 29, 2022
+    Page: '"http://172.17.238.53/148604"'
+    Platform: Seastone-II
+    RegId: '148604'
+    Time: '11:48:18'
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/918606"'
+    Platform: Seastone-II
+    RegId: '918606'
+    Time: 02:51:18
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/258636"'
+    Platform: Seastone-II
+    RegId: '258636'
+    Time: 02:59:32
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/993961"'
+    Platform: Seastone-II
+    RegId: '993961'
+    Time: 03:01:56
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/970624"'
+    Platform: Seastone-II
+    RegId: '970624'
+    Time: 03:02:49
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/138620"'
+    Platform: Seastone-II
+    RegId: '138620'
+    Time: 03:28:39
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/485012"'
+    Platform: Seastone-II
+    RegId: '485012'
+    Time: 03:29:55
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/914943"'
+    Platform: Seastone-II
+    RegId: '914943'
+    Time: 03:41:16
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/929911"'
+    Platform: Seastone-II
+    RegId: '929911'
+    Time: 03:46:21
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/433561"'
+    Platform: Seastone-II
+    RegId: '433561'
+    Time: 03:52:47
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/639812"'
+    Platform: Seastone-II
+    RegId: '639812'
+    Time: 03:54:33
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/658844"'
+    Platform: Seastone-II
+    RegId: '658844'
+    Time: 03:55:15
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/443689"'
+    Platform: Seastone-II
+    RegId: '443689'
+    Time: 03:59:44
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/226908"'
+    Platform: Seastone-II
+    RegId: '226908'
+    Time: 04:06:45
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/372769"'
+    Platform: Seastone-II
+    RegId: '372769'
+    Time: 04:09:53
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/318768"'
+    Platform: Seastone-II
+    RegId: '318768'
+    Time: 04:32:43
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/766356"'
+    Platform: Seastone-II
+    RegId: '766356'
+    Time: 04:42:51
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/630874"'
+    Platform: Seastone-II
+    RegId: '630874'
+    Time: 07:16:43
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/502782"'
+    Platform: Seastone-II
+    RegId: '502782'
+    Time: 07:19:50
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/205120"'
+    Platform: Seastone-II
+    RegId: '205120'
+    Time: 07:23:04
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/282814"'
+    Platform: Seastone-II
+    RegId: '282814'
+    Time: 07:24:21
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/672329"'
+    Platform: Seastone-II
+    RegId: '672329'
+    Time: 07:24:52
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/945244"'
+    Platform: Seastone-II
+    RegId: '945244'
+    Time: 07:27:52
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/956625"'
+    Platform: Seastone-II
+    RegId: '956625'
+    Time: 07:55:19
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/595539"'
+    Platform: Seastone-II
+    RegId: '595539'
+    Time: 08:04:07
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/110081"'
+    Platform: Seastone-II
+    RegId: '110081'
+    Time: 08:10:27
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/692303"'
+    Platform: Seastone-II
+    RegId: '692303'
+    Time: 08:12:37
+  - Date: September 04, 2022
+    Page: '"http://172.17.238.53/950114"'
+    Platform: Seastone-II
+    RegId: '950114'
+    Time: 08:14:05
   Table_Name: ONL
